@@ -1,0 +1,13 @@
+
+
+ 
+ <br><br>
+
+ <%= form_with scope: :filter_tags, url:filter_tags_path, local: true do |form| %>
+  <%= check_box 'x', 'result', {onchange: 'this.form.submit();'}, 1, 0 %>Payment
+  <%= check_box 'x', 'result', {onchange: 'this.form.submit();'}, 1, 0 %>Internship
+  <%= check_box 'x', 'result', {onchange: 'this.form.submit();'}, 1, 0 %>Urgency
+  <%= check_box 'x', 'result', {onchange: 'this.form.submit();'}, 1, 0 %>Miscellaneous
+   <%= form.select :branch, ["cse","mech","civil"],{include_blank: "Branch"},{ onchange: 'this.form.submit();'}%>
+   <%= form.select :difficulty, ["easy","medium","hard"],{include_blank: "Difficulty"},{ onchange: 'this.form.submit();'}%>
+  <% end %>

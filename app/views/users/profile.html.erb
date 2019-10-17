@@ -1,0 +1,58 @@
+
+
+<div class="content">
+<div class="wrapper giftwrapper--w960" >
+            <div class="card card-4" >
+                <div class="card-body">
+                    <h2 class="title" align="center">PROFILE</h2>
+                       <div style="width:500px">
+                         
+                        <div class="input-group">
+                            <label class="label">UserName: </label>
+                           			<div class="show">
+                                	<p><%= @user.username%></p>
+                                </div>
+                        </div>  
+<br>
+                    <div class="input-group">
+                            <label class="label">Date of Birth: </label>
+                                <div class="show"><%=  @user.dob%></div>
+                        </div>
+
+<br>
+            
+                    <div class="input-group">
+                            <label class="label">Email: </label>
+                                <div class="show"><%= @user.email%></div>
+                        </div>
+<br>
+                        <div class="input-group">
+                            <label class="label">Edu: </label>
+                                <div class="show"><%= @user.qualification%></div>
+                        </div>
+<br>
+                        <div class="input-group">
+                            <label class="label">Skills: </label>
+                                <div class="show"><%= @user.skills%></div>
+                        </div>
+<br>    
+                        <div class="input-group">
+                            <label class="label">About: </label>
+                               <div class="show"> <%= @user.about%></div>
+                        </div>
+
+                        <div class = "avatarwrap">
+                            <%= image_tag(@user.avatar) %>
+                        </div>
+                    
+                           
+                        
+                       </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+
+

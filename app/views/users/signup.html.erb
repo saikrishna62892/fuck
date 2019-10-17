@@ -1,0 +1,55 @@
+
+
+ <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title" align="center">Sign UP!</h2>
+                        <%= form_with scope: :signup, url:signningUp_path, local: true do |form| %>
+                        
+                        <div class="input-group">
+                            <label class="label">USERNAME: </label>
+                                <%= form.text_field :username , class: "input--style-4" , placeholder: "USERNAME"%>
+                        </div>
+                        <div class="input-group" >
+                            <label class="label">FIRSTNAME: </label>
+                                <%= form.text_field :firstname , class: "input--style-4" , placeholder: "FIRSTNAME",rows: "3",cols:"50"%>
+                        </div>  
+
+                         <div class="input-group">
+                            <label class="label">LASTNAME: </label>
+                                <%= form.text_field :lastname , class: "input--style-4" , placeholder: "LASTNAME",rows: "3",cols:"50"%>
+                        </div>  
+
+                    <div class="input-group">
+                            <label class="label">DATE OF BIRTH: </label>
+                                <%= form.date_field :dob ,class: "input--style-4" %>
+                        </div>
+
+
+                    <div class="input-group">
+                            <label class="label">EMAIL: </label>
+                                <%= form.email_field :email ,class: "input--style-4" %>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="label">PASSWORD: </label>
+                                <%= form.password_field :password , class: "input--style-4" ,rows: "3",cols:"50"%>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label class="label">PASSWORD CONFIRMATION: </label>
+                                <%= form.password_field :password_confirmation , class: "input--style-4" ,rows: "3",cols:"50"%>
+                        </div>  
+
+                    
+                           
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+                        
+                    <%end%>
+                </div>
+            </div>
+    </div>
+

@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deadline: 2019-10-13
+  payment: false
+  internship: false
+  urgency: false
+  miscellaneous: false
+  dot: MyString
+  type: 
+  difficulty: MyString
+  branch: MyString
+
+two:
+  deadline: 2019-10-13
+  payment: false
+  internship: false
+  urgency: false
+  miscellaneous: false
+  dot: MyString
+  type: 
+  difficulty: MyString
+  branch: MyString

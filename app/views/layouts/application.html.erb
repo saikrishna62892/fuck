@@ -1,0 +1,172 @@
+<%= stylesheet_link_tag "style", media: "all", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag "logindrop", media: "all", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/logindrop.css">
+  
+</head>
+<body id="main">
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="/wall">Wall</a>
+  <a href="/post_problem">Post a Problem</a>
+  <a href="/users">Users</a>
+  <a href="/view">View Profile</a>
+  <a href="/edit">Edit Profile</a>
+  <a href="/logout">Logout</a>
+</div>
+<div class="topnav sticky-top">
+  <div id="main">
+        <button class="openbtn" style="float: left"onclick="openNav()">☰ </button> 
+        <a class="inactive" style="float: left" href="/"><img src="assets/psp.png" alt="PSP"></a>
+        <a class="active" href="/">Home</a>
+        <a href="/signup">Signup</a>
+<% if !logged_in? %>
+        <div class="dropdown1">
+            <button onclick="myFunction()" class="dropbtn1">LOGIN</button>
+                  <div id="myDropdown1" class="dropdown-content1">
+
+                   <div class="form-container1">
+                       <%= form_for(:session, url: login_path) do |f| %>
+
+                      <%= f.label :email %>
+                      <%= f.email_field :email, class: 'form-control', placeholder: "email" %>
+
+                      <%= f.label :password %>
+                      <%= f.password_field :password, class: 'form-control', placeholder: "password"  %>
+
+                      <%= f.submit "Log in", class: "btn btn-primary" %>
+                    <% end %>
+        </div>
+
+
+
+
+  </div>
+  <% else %>
+
+  <div class="dropdown1">
+            <%= link_to 'LOGOUT' , logout_path, class: "dropbtn1" %> 
+            
+
+                   
+
+
+
+
+  </div>
+  <% end %>
+</div>
+
+       <!-- <div class="search-container">
+        <%= form_with scope: :home_search, local: true, url:'/home_search' do |form| %>
+        <%= form.text_field :search, placeholder: "Google Custom Search" %>
+        <button type="submit" target="_blank"><i class="fa fa-search"></i></button>
+        <% end %>
+  </div>-->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown1").classList.toggle("show1");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn1')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content1");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show1')) {
+        openDropdown.classList.remove('show1');
+      }
+    }
+  }
+}
+</script>
+
+
+
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "200px";
+  document.getElementById("main").style.marginLeft = "200px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+
+ 
+<%= yield %>
+
+
+
+ 
+</body>
+
+<div class="footer">
+  <div class="row">
+  <div class="columndiv1">
+    <br><br><br><br><br><br><p style="">&copy CopyRight 2019 . All rights reserved.</p>
+  </div>
+  <div class="columndiv2">
+  <a href="/index"><p style="color:white;margin-bottom:0px;"><b>About PSP</b></p></a>
+  <a href="/wall"><p style="color:white;margin-bottom: 0px;">Wall</p></a>
+  <a href="/post_problem"><p style="color:white;margin-bottom: 0px;">Post a Problem</p></a>
+  <a href="/users"><p style="color:white;margin-bottom: 0px;">Users</p></a>
+  <a href="/view"><p style="color:white;margin-bottom: 0px;">View Profile</p></a>
+  <a href="/edit"><p style="color:white;margin-bottom: 0px;">Edit Profile</p></a>
+  <a href="/logout"><p style="color:white;margin-bottom: 0px;">Logout</p></a>
+  </div>
+  <div class="columndiv1">
+    <p align="center"> <b>Suggestion Box</b></p>
+    <%= form_with scope: :suggestion_box, local: true, url:'/suggestion_box' do |form| %>
+    <p>Username &nbsp;&nbsp;<%= form.text_field :user_name, placeholder: "Your Username.." %></p>
+    <p>Subject &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.text_area :subject, placeholder: "Write something.." %></p>
+    <div align="center"><%= form.submit 'Submit'%></div>
+  <% end %>
+  </div>
+</div>
+</div>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+

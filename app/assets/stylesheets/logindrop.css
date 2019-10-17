@@ -1,0 +1,61 @@
+
+
+/* LOGIN DROPDOWN */
+.dropbtn1 {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+
+}
+
+.dropbtn1:hover, .dropbtn1:focus {
+  background-color: #2980B9;
+  z-index: 1230000000;
+  x-index: 45000;
+}
+
+.dropdown1 {
+  
+  display: inline-block;
+  z-index: 123000000000;
+}
+
+.dropdown-content1 {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 300px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1230000;
+}
+
+.dropdown-content1 a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  z-index: 1230000;
+}
+
+
+.form-container1 {
+  max-width: 400px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container1 input[type=text], .form-container1 input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.dropdown1 a:hover {background-color: #ddd;}
+
+.show1 {display: block;z-index: 123;}

@@ -1,0 +1,51 @@
+
+ 
+ <br>
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title" align="center"><strong>POST A PROBLEM</strong></h2>
+                        <%= form_with scope: :problem, url:getProblemDetails_path, local: true do |form| %>
+                        <div class="container">
+                            <label class="label"><b>Title</b></label><br>
+                                <%= form.text_field :prob_title, placeholder: "Title..."%>
+                        </div>
+                        <div class="container">
+                            <label class="label"><b>Subject</b></label>
+                                <%= form.text_field :prob_subject , class: "input--style-4" , placeholder: "Subject..."%>
+                        </div>
+                        <div class="container">
+                            <label class="label"><b>Description</b></label>
+                                <%= form.text_area :prob_description , class: "input--style-4" , placeholder: "description of problem...",rows: "3",cols:"50"%>
+                        </div>  
+                        <div class="container">
+                            <b>Upload (img/pdf/docx) </b>&nbsp;<%= form.file_field :attachment %>
+                        </div>
+                        <div class="container">
+                               <b>Deadline </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.date_field :deadline  %>
+                        </div>
+
+                        <div class="container" style="margin: 0;">
+                            <b> Tags </b><br>
+                            <%= check_box 'payment', 'result', {}, 1, 0 %>&nbsp; Payment
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= check_box 'internship', 'result', {}, 1, 0 %>&nbsp; Internship
+                            <br>
+                             <%= check_box 'urgency', 'result', {}, 1, 0 %>&nbsp;Urgency&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <%= check_box 'miscellaneous', 'result', {}, 1, 0 %>&nbsp;Miscellaneous
+                            
+                            <%= form.select :branch, ["cse","mech","civil"], include_blank: "Branch"%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <%= form.select :difficulty_level, ["easy","medium","hard"], include_blank: "Difficulty"%>
+                            
+                            <div class="container"><b>Task allocation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><%= form.radio_button :dot, 'group' %> Group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.radio_button :dot, 'individual' %> Individual</div>
+                            </p>
+                           
+                        <div  align="center">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+                        
+                    <%end%>
+                </div>
+            </div>
+    </div>
+</div>
+<br>
