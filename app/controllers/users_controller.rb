@@ -113,13 +113,27 @@ end
     end
     #@pdf =@problem.attachment.attachment
   end
-  def wall
+  def wall(tags)
+    @problems = tags
   end
   def filter_tags
-    @prob = Tag.joins(:problem).where(:branch=> filter_tag_params[:branch]).select(:problem_id)
-    @global_problem = Problem.where(id: @prob)
-    render plain: @x.inspect
+    filter_tag_params={
+      "payment1" => params[:payment][:result],
+      "internship1" => params[:internship][:result],
+      "urgency1" => params[:urgency][:result],
+      "miscellaneous1" => params[:miscellaneous][:result],
+      "branch1" => filter_params[:branch],
+      "difficulty1" => filter_params[:difficulty]
+    }
+    @tags = Tag.where(nil)
+    filter_tag_params.each do |key, value|
+    if value!="0" && value!=""
+    @tags = @tags.public_send(key, value)
+    end
+    end
+    render plain: @tags.inspect
   end
+
   private
 	def home_search_params
 		params.require(:home_search).permit(:search)
@@ -133,8 +147,8 @@ end
   def problem_params2
     params.require(:problem).permit(:prob_title,:prob_subject,:prob_description,:attachment)
   end
-  def filter_tag_params
-    params.require(:filter_tags).permit(:payment,:internship,:urgency,:miscellaneous,:branch,:difficulty)
+  def filter_params
+    params.require(:filter_tags).permit(:branch,:difficulty)
   end
 
   def signup_params

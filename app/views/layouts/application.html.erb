@@ -19,12 +19,11 @@
 
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="/wall">Wall</a>
-  <a href="/post_problem">Post a Problem</a>
-  <a href="/users">Users</a>
-  <a href="/view">View Profile</a>
-  <a href="/edit">Edit Profile</a>
-  <a href="/logout">Logout</a>
+  <%= link_to('Wall',wall_path) %>
+  <%= link_to('Post a Problem',post_problem_path) %>
+  <%= link_to('View Profile',user_profile_path) %>
+  <%= link_to('Edit Profile',user_edit_profile_path) %>
+  <%= link_to('Logout',logout_path) %>
 </div>
 <div class="topnav sticky-top">
   <div id="main">
