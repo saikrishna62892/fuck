@@ -113,8 +113,9 @@ end
     end
     #@pdf =@problem.attachment.attachment
   end
-  def wall(tags)
-    @problems = tags
+  def wall(problems = Problem.all)
+    @problems = problems
+    render 'wall'
   end
   def filter_tags
     filter_tag_params={
@@ -125,14 +126,27 @@ end
       "branch1" => filter_params[:branch],
       "difficulty1" => filter_params[:difficulty]
     }
-    @tags = Tag.where(nil)
+    tags1 = Tag.where(nil)
     filter_tag_params.each do |key, value|
-    if value!="0" && value!=""
-    @tags = @tags.public_send(key, value)
+      if value!="0" && value!=""
+        tags1 = tags1.public_send(key, value)
+      end
     end
-    end
-    render plain: @tags.inspect
+    problemids=tags1.select(:problem_id)
+    problems=Problem.where(:id => problemids)
+    wall(problems)
   end
+  def view_problem
+    @prob_id = params[:id]
+    @view = Problem.find(@prob_id)
+
+  end
+  def solution
+  end
+  def request_access
+
+  end
+
 
   private
 	def home_search_params

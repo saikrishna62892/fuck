@@ -35,5 +35,8 @@ get 'show_attachments' => 'users#show_attachments'
 
 get '/debug' => 'users#debug',as: 'debug'
 post '/filter_tags' => 'users#filter_tags',as: 'filter_tags'
+get '/viewproblem/:id' => 'users#view_problem',as:'view_problem'
+get '/solution' => 'users#solution',as:'solution'
+get '/request' => 'users#request',as:'request'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

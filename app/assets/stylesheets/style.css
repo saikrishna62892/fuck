@@ -129,7 +129,7 @@ body {
 
 a {
   color: #4aca85;
-  font-size: 10;
+  font-size: 12;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s; }
@@ -691,4 +691,8 @@ label {
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
+}
+/* samples */
+.sample {
+  width: 12%;
 }

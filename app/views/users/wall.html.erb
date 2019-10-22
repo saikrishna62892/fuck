@@ -1,18 +1,20 @@
 
 
- 
- <br><br>
-<div class="container">
+ <div class="container" align="center" style="border-color: black;">
  <%= form_with scope: :filter_tags, url:filter_tags_path, local: true do |form| %>
-  <%= check_box 'payment', 'result', {onchange: 'this.form.submit();'}, 1, 0 %>Payment
-  <%= check_box 'internship', 'result', {onchange: 'this.form.submit();'}, 1, 0 %>Internship
-  <%= check_box 'urgency', 'result', {onchange: 'this.form.submit();'}, 1, 0 %>Urgency
-  <%= check_box 'miscellaneous', 'result', {onchange: 'this.form.submit();'}, 1, 0 %>Miscellaneous
-   <%= form.select :branch, ["cse","mech","civil"],{include_blank: "Branch"},{ onchange: 'this.form.submit();'}%>
-   <%= form.select :difficulty, ["easy","medium","hard"],{include_blank: "Difficulty"},{ onchange: 'this.form.submit();'}%>
+  <%= check_box 'payment', 'result', {}, 1, 0 %>&nbsp;<strong>Payment</strong>
+  <%= check_box 'internship', 'result', {}, 1, 0 %>&nbsp;<strong>Internship</strong>
+  <%= check_box 'urgency', 'result', {}, 1, 0 %>&nbsp;<strong>Urgency</strong>
+  <%= check_box 'miscellaneous', 'result', {}, 1, 0 %>&nbsp;<strong>Miscellaneous</strong>
+  &nbsp;<%= form.select :branch, ["cse","mech","civil"],{include_blank: "Branch"},{ class: 'sample'}%>
+  &nbsp;<%= form.select :difficulty, ["easy","medium","hard"],{include_blank: "Difficulty"},{class: 'sample' }%>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">search</button>
 </div>
   <% end %>
 
+ <div class="wrapper wrapper--w960">
+            <div class="card card-4">
+                <div class="card-body">
 <% temp = @problems.order("created_at DESC") %>
 <!-- Problems ddetails -->
 <% temp.each do |prob| %>
@@ -25,8 +27,15 @@
     </div>
     <p class="mb-1"><%= prob.prob_subject %></p>
     <% @tag=Tag.find_by(problem_id: prob.id)%>
-    <p class="text-muted">Payment :&nbsp;<%= @tag.payment%></p><p>Internship :&nbsp;<%= @tag.internship%></p><p>Urgency :&nbsp;<%= @tag.urgency%></p><p>Miscellaneous :&nbsp;<%= @tag.miscellaneous%></p><p>Branch :&nbsp;<%= @tag.branch%></p><p>Difficulty :&nbsp;<%= @tag.difficulty%>&nbsp;&nbsp;</p>
-    <button></button>
+    <small class="text-muted">Payment :&nbsp;<%= @tag.payment%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Internship :&nbsp;<%= @tag.internship%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urgency :&nbsp;<%= @tag.urgency%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Miscellaneous :&nbsp;<%= @tag.miscellaneous%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Branch :&nbsp;<%= @tag.branch%>&nbsp;&nbsp;&nbsp;&nbsp;Difficulty :&nbsp;<%= @tag.difficulty%>&nbsp;&nbsp;</small>
+    <h5 align="right"><%= link_to('View Problem',view_problem_path(prob)) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <%= link_to('Post Solution',solution_path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to('Request Access',request_path,data: { confirm: 'Are you sure?' }) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+
   </a>
 </div>
 <% end %>
+</div>
+</div>
+</br>
+</div>

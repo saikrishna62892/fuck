@@ -21,9 +21,10 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <%= link_to('Wall',wall_path) %>
   <%= link_to('Post a Problem',post_problem_path) %>
-  <%= link_to('View Profile',user_profile_path) %>
-  <%= link_to('Edit Profile',user_edit_profile_path) %>
+  <a href="/profile">View Profile</a>
+  <a href="/edit">Edit Profile</a>
   <%= link_to('Logout',logout_path) %>
+  <br><br><br><br><br><br><a href="#">Admin</a>
 </div>
 <div class="topnav sticky-top">
   <div id="main">
@@ -106,13 +107,7 @@ window.onclick = function(event) {
     }
   }
 }
-</script>
 
-
-
-
-
-<script>
 function openNav() {
   document.getElementById("mySidebar").style.width = "200px";
   document.getElementById("main").style.marginLeft = "200px";
