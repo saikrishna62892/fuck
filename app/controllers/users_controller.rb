@@ -140,11 +140,47 @@ end
     @prob_id = params[:id]
     @view = Problem.find(@prob_id)
 
+
   end
-  def solution
+  def post_solution
+    probid=params[:prob_id]
+    @problem = Problem.find(probid)
+    @user=current_user
+    @solution = Solution.where(:problem_id => probid, :user_id => @user.id)
+
+    
+    if( !@solution.present?)
+       @sol=@problem.solutions.new(post_solution_params)
+       @sol.user_id = @user.id
+
+    if @sol.save
+        redirect_to view_problem_path(@problem)
+     end
+ else
+    #debugger
+    @solution.update(post_solution_params)
+
+    redirect_to view_problem_path(@problem)
+  end 
+    #@solution = Solution.create(post_solution_params)
+
+
   end
   def request_access
-
+      @probid = params[:prob_id]
+      @user = current_user
+      @access = RequestAccess.where(:problem_id => @probid, :user_id => @user.id)
+      #render plain: @access.inspect
+      if(@access.present?)
+        redirect_to wall_path,danger:"Request already made!!"
+      else
+        @req = RequestAccess.new(:problem_id => @probid,:user_id => @user.id)
+        if @req.save
+        redirect_to wall_path,success:"Request made Succesfully!!"
+        else
+        redirect_to wall_path,danger:"Oops!!,Something Went Wrong"
+        end
+      end
   end
 
 
@@ -170,5 +206,8 @@ end
   end
   def editform_params
     params.require(:editform).permit(:username,:firstname,:lastname,:dob,:email,:avatar,:qualification,:skills,:about)
+  end
+  def post_solution_params
+    params.require(:solution).permit(:comment,:progress,:attachment)
   end
 end

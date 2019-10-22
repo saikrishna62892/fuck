@@ -1,3 +1,53 @@
+
 <%= @view %>
 <%= link_to 'XXX',@view.attachment.attachment,:disposition => 'inline' %>
+<!--<iframe src=<%= @view.attachment.attachment %> width="600" height="780" style="border: none;"> </iframe>-->
+<a href="https://docs.google.com/gview?url=<%=  u @view.attachment.attachment %>&embedded=true">Your Pdf Viewer</a>
 <%= @view.tags %>
+<a href="https://docs.google.com/gview?url={#{@view.attachment.attachment}}&embedded=true">Youer</a>
+<br>
+        <div class="wrapper wrapper--w960">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title" align="center"><strong><%= @view.prob_title %></strong></h2>
+                        
+                        <p><strong> SUBJECT&nbsp;:&nbsp;</strong><%= @view.prob_subject %></p>
+                        <p><strong> DESCRIPTION&nbsp;:&nbsp;</strong><%= @view.prob_description %></p>
+                        <p><strong> TAGS&nbsp;:&nbsp;</strong></p>
+                        <% tag=Tag.find_by(problem_id: @prob_id)%>
+                        <p><strong> Payment&nbsp;:&nbsp;</strong><%= tag.payment %></p>
+                        <p><strong> Internship&nbsp;:&nbsp;</strong><%= tag.internship %></p>
+                        <p><strong> Urgency&nbsp;:&nbsp;</strong><%= tag.urgency %></p>
+                        <p><strong> Miscellaneous&nbsp;:&nbsp;</strong><%= tag.miscellaneous %></p>
+                        <p><strong> Branch&nbsp;:&nbsp;</strong><%= tag.branch %></p>
+                        <p><strong> Difficulty&nbsp;:&nbsp;</strong><%= tag.difficulty %></p>
+                        <p><strong> Task allotement&nbsp;:&nbsp;</strong><%= tag.dot%></p>
+                        <p><strong> Deadline&nbsp;:&nbsp;</strong><%= tag.deadline %></p>
+                        </div>
+                    </div>
+        </div>
+        <%= form_with scope: :solution, url:post_solution_path(@view), local: true do |form| %>
+
+        <div class="container">
+            <label class="label"><b>Progress:</b></label>
+                <%= form.text_field :progress , class: "input--style-4" , placeholder: "status of solution..."%>
+        </div>
+        <div class="container">
+            <label class="label"><b>Comments:</b></label>
+                <%= form.text_area :comment,class: "input--style-4" %>
+        </div>
+
+        <div class="container">
+            <label class="label"><b>Upload pdf:</b></label>
+                <%= form.file_field :attachment ,class: "input--style-4" %>
+         </div>
+         <div  align="center">
+            <button type="submit">Submit</button>
+        </div>
+         <%end%>         
+
+         <% @view.solutions.each do |sol| %>
+         <%= sol.progress %>
+         <% end %>  
+
+<br>

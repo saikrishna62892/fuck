@@ -1,5 +1,5 @@
 
-
+<%= render 'flash_messages' %>
  <div class="container" align="center" style="border-color: black;">
  <%= form_with scope: :filter_tags, url:filter_tags_path, local: true do |form| %>
   <%= check_box 'payment', 'result', {}, 1, 0 %>&nbsp;<strong>Payment</strong>
@@ -29,8 +29,7 @@
     <% @tag=Tag.find_by(problem_id: prob.id)%>
     <small class="text-muted">Payment :&nbsp;<%= @tag.payment%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Internship :&nbsp;<%= @tag.internship%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urgency :&nbsp;<%= @tag.urgency%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Miscellaneous :&nbsp;<%= @tag.miscellaneous%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Branch :&nbsp;<%= @tag.branch%>&nbsp;&nbsp;&nbsp;&nbsp;Difficulty :&nbsp;<%= @tag.difficulty%>&nbsp;&nbsp;</small>
     <h5 align="right"><%= link_to('View Problem',view_problem_path(prob)) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     <%= link_to('Post Solution',solution_path) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to('Request Access',request_path,data: { confirm: 'Are you sure?' }) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+      <%= link_to('Request Access',request_access_path(prob),data: { confirm: 'Press Yes to Confirm?' }) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
 
   </a>
 </div>

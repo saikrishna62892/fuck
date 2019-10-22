@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_130159) do
+ActiveRecord::Schema.define(version: 2019_10_22_180605) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -44,6 +44,27 @@ ActiveRecord::Schema.define(version: 2019_10_15_130159) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "prob_title"
+  end
+
+  create_table "request_accesses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "grant_access"
+    t.bigint "problem_id"
+    t.bigint "user_id"
+    t.index ["problem_id"], name: "index_request_accesses_on_problem_id"
+    t.index ["user_id"], name: "index_request_accesses_on_user_id"
+  end
+
+  create_table "solutions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "problem_id"
+    t.bigint "user_id"
+    t.string "progress"
+    t.index ["problem_id"], name: "index_solutions_on_problem_id"
+    t.index ["user_id"], name: "index_solutions_on_user_id"
   end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
