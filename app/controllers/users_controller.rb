@@ -101,7 +101,9 @@ end
   end
   def getProblemDetails
     #render plain:params[:payment][:result].inspect
-    @problem=Problem.create(problem_params2)
+    #@problem=Problem.create(problem_params2)
+    @user = current_user
+    @problem = @user.problems.new(problem_params2)
     if @problem.save
       @tag=@problem.tags.new(:deadline=> problem_params1[:deadline],:payment=> params[:payment][:result],:internship=> params[:internship][:result],:urgency=> params[:urgency][:result],:miscellaneous=> params[:miscellaneous][:result],:dot=> problem_params1[:dot],:type=> problem_params1[:type],:difficulty=> problem_params1[:difficulty_level],:branch=> problem_params1[:branch])
       @tag.save
@@ -141,6 +143,29 @@ end
 
 
   end
+
+  def myPostedProblems
+    @user = current_user
+    @posted_problems = @user.problems
+
+
+
+  end
+
+  def viewRequests
+    @problem = Problem.find(params[:prob_id])
+    @requests = @problem.request_accesses
+
+  end
+
+  def grantAccess
+
+    @request = RequestAccess.find(params[:request_id])
+    @request.update(:grant_access => true )
+    redirect_to user_posted_problems_url(current_user)
+
+  end
+
   def post_solution
     probid=params[:prob_id]
     @problem = Problem.find(probid)
