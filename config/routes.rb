@@ -5,7 +5,7 @@ get '/wall' => 'users#wall',as: 'wall'
 get '/index'=>'users#index' ,as: 'index'
 post '/home_search' => 'users#home_search'
 post '/suggestion_box' => 'users#suggestion_box'
-
+get '/users' => 'users#users',as: 'users'
 get '/signup'=>'users#signup' ,as: 'signup'
 
 post '/signningUp' => 'users#signningUp', as: 'signningUp'

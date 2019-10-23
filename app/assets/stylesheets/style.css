@@ -89,9 +89,9 @@ body {
   padding: 20px;
   padding-bottom: 50px;
 }
-  .footer {
-   
-   
+  
+.footer {
+
    left: 0;
    bottom: 100%;
    padding: 6px 10px;
@@ -99,9 +99,18 @@ body {
    background-color: #343a40;
    color: white;
    z-index: 0;
-  
    text-align: center;
 }
+.footer a {
+  color: #4aca85;
+  font-size: 16;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s; }
+  a:hover, a:active, a:focus {
+    color: #4aca85;
+    outline: none;
+    text-decoration: none; }
 
 #page {
   position: relative;
@@ -359,17 +368,17 @@ input[type=submit]:hover {
 /* Create three equal columns that floats next to each other */
 .columndiv1 {
   float: left;
-  width: 40%;
+  width: 30%;
   padding: 0px;
 }
 .columndiv2 {
   float: left;
-  width: 20%;
+  width: 30%;
   padding: 0px;
 }
 .columndiv3 {
   float: left;
-  width: 50%;
+  width: 40%;
   padding: 0px;
 }
 /* Clear floats after the columns */
@@ -692,7 +701,17 @@ label {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
-/* samples */
-.sample {
-  width: 12%;
+/* card users */
+.carduser {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.carduser:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.containercard {
+  padding: 2px 16px;
 }

@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   def index
   	flash[:info] = "Welcome to PSP site!!"
   end
+  def users
+    @users=User.all
+  end
   def home_search
   	search=home_search_params[:search]
   	#redirect_to "https://www.google.com/search?client=ubuntu&channel=fs&q=#{search}&ie=utf-8&oe=utf-8", target: :_blank
@@ -29,16 +32,12 @@ class UsersController < ApplicationController
   end
 
   def signningUp
-
     @user = User.new(signup_params)
-
     @user.otp = rand 100000..999999
-
-    if @user.save
-      
+    if @user.save  
     UserMailer.email_verifier(@user).deliver_now
-     flash[:success]="Signup successful"
-      redirect_to root_url    
+    flash[:success]="Signup successful"
+    redirect_to root_url    
 
     else
 
@@ -202,7 +201,7 @@ end
   end
 
   def signup_params
-    params.require(:signup).permit(:username,:firstname,:lastname,:dob,:email,:password,:password_confirmation)
+    params.require(:signup).permit(:username,:firstname,:lastname,:dob,:email,:password,:password_confirmation,:gender)
   end
   def editform_params
     params.require(:editform).permit(:username,:firstname,:lastname,:dob,:email,:avatar,:qualification,:skills,:about)
