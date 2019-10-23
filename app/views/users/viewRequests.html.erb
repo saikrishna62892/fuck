@@ -1,0 +1,9 @@
+<% @requests.each do |request| %>
+<%= User.find(request.user_id).username %>
+<% if request.grant_access != true %>
+<%= link_to "Grant Access", grant_access_path(request) %>
+<% end %>
+<%= link_to('View Profile', user_profile_path(request.user_id)) %>
+<br>
+
+<% end %>
