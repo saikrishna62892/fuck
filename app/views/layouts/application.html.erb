@@ -30,8 +30,15 @@
   <div id="main">
         <button class="openbtn" style="float: left"onclick="openNav()">☰ </button> 
         <a class="inactive" style="float: left" href="/"><img src="assets/psp.png" alt="PSP"></a>
+
         <a class="active" href="/">Home</a>
         <a href="/signup">Signup</a>
+        <div class="search-container">
+        <%= form_with scope: :home_search, local: true, url:'/home_search' do |form| %>
+        <%= form.text_field :search, placeholder: "Google Custom Search" %>
+        <button type="submit" target="_blank"><i class="fa fa-search"></i></button>
+        <% end %>
+  </div>
 <% if !logged_in? %>
         <div class="dropdown1">
             <button onclick="myFunction()" class="dropbtn1">LOGIN</button>
@@ -69,12 +76,7 @@
   <% end %>
 </div>
 
-       <!-- <div class="search-container">
-        <%= form_with scope: :home_search, local: true, url:'/home_search' do |form| %>
-        <%= form.text_field :search, placeholder: "Google Custom Search" %>
-        <button type="submit" target="_blank"><i class="fa fa-search"></i></button>
-        <% end %>
-  </div>-->
+       
   </div>
 </div>
 

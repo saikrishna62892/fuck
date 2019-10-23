@@ -1,10 +1,19 @@
-<div class="carduser">
-  <img src="assets/p.png" alt="Avatar" style="width:100%">
-  <div class="containercard">
-    <h4><b><% @users.each do |user| %>
-    	<%= user.username %>
-    	<% end %>
-    </b></h4> 
-    <p>Architect & Engineer</p> 
+<br>
+<center>
+	<div class="search-container">
+        <%= form_with scope: :user_search, local: true, url:'/user_search' do |form| %>
+        <%= form.text_field :search, placeholder: "Search Username.." %>
+        <button type="submit" target="_blank"><i class="fa fa-search"></i></button>
+        <% end %>
   </div>
-</div>
+</center>
+  	<% @users.each do |user| %>
+  	<div class="carduser">
+  	<center><div class="containercard">
+  	<%= image_tag(user.avatar,:size => "200x200")%>
+    <h4><b><%= user.username %></b></h4> 
+    <p><%= user.email %></p> 
+    </div></center>
+	</div><br>
+
+    <% end %>

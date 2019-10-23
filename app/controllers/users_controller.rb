@@ -9,8 +9,17 @@ class UsersController < ApplicationController
   end
   def home_search
   	search=home_search_params[:search]
-  	#redirect_to "https://www.google.com/search?client=ubuntu&channel=fs&q=#{search}&ie=utf-8&oe=utf-8", target: :_blank
+  	redirect_to "https://www.google.com/search?client=ubuntu&channel=fs&q=#{search}&ie=utf-8&oe=utf-8", target: :_blank
     #render <%= link_to 'Google', 'google.com', :target => '_blank' %>
+  end
+  def user_search
+    search = user_search_params[:search]
+    @user = User.find_by(username: search)
+    if @user
+      redirect_to user_profile_path(@user)
+    else
+      flash[:danger] = "User Not Found!!"
+    end
   end
   def suggestion_box
   	user_name=suggestion_box_params[:user_name]
@@ -187,6 +196,9 @@ end
 	def home_search_params
 		params.require(:home_search).permit(:search)
 	end
+  def user_search_params
+    params.require(:user_search).permit(:search)
+  end
 	def suggestion_box_params
 		params.require(:suggestion_box).permit(:user_name,:subject)
 	end
