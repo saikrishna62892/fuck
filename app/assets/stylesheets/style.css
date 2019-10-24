@@ -19,6 +19,8 @@ html {
 }
 
 
+
+
 body {
     height: 100%;
 
@@ -29,6 +31,8 @@ body {
   line-height: 2;
   color: gray;
   background: #f7f6f9 }
+
+  
 
 .avatarwrap {
   display: inline-block;
@@ -173,7 +177,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
   z-index: -1;
   color: #818181;
   display: block;
@@ -467,7 +471,7 @@ input[type=submit]:hover {
    ========================================================================== */
 .btn {
   display: inline-block;
-  line-height: 50px;
+  
   padding: 0 25px;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
@@ -523,13 +527,14 @@ input[type=text], textarea{
   resize: vertical;
 }
 select{
-  width: 15%;
+  width: 30%;
   padding: 0px;
   border: 2px solid #ccc;
   border-radius: 0px;
   box-sizing: border-box;
   resize: vertical;
 }
+
 /* Style the label to display next to the inputs */
 label {
   padding: 12px 12px 12px 0;

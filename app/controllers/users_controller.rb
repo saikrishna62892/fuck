@@ -118,8 +118,7 @@ end
       @tag.save
       redirect_to wall_path,success: "Problem Created Succesfully!!"
     else
-      flash[:danger]="Something went wrong!!"
-      render '/post_problem'
+      redirect_to post_problem_path,danger: "Something went wrong, Please Try Again!!"
     end
     #@pdf =@problem.attachment.attachment
   end
@@ -159,6 +158,15 @@ end
 
 
 
+  end
+  def myPostedSolutions
+      @user = current_user
+      @posted_solutions = @user.solutions
+     # @prob = nil
+  end
+  def sentRequests
+      @user = current_user
+      @sent_requests = @user.request_accesses
   end
 
   def viewRequests

@@ -1,0 +1,40 @@
+
+<center><h3> My Posted Solutions</h3></center>
+ 
+<% temp = @posted_solutions.order("created_at DESC") %>
+<!-- Problems ddetails -->
+<% temp.each do |sol| %>
+  <% prob=Problem.find(sol.problem_id) %>
+
+ <div class="wrapper wrapper--w960">
+            <div class="card card-4">
+                <div class="card-body">
+
+  
+<div class="list-group">
+  
+  <!--<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">-->
+    <div class="d-flex w-100 justify-content-between">
+      <h4 class="mb-1"><%= prob.prob_title %></h4>
+      <small class="text-muted"><%= distance_of_time_in_words(sol.created_at, Time.now) %></small>
+    </div>
+    <p class="mb-1"><%= prob.prob_subject %></p>
+    
+    <h5 align="right"><%= link_to('View Problem',view_problem_path(prob)) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to('View Requests',view_requests_path(prob),data: { confirm: 'Press Yes to Confirm?' }) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+
+   
+ 
+
+
+ 
+
+  <p><%= sol.progress %> &nbsp;&nbsp;&nbsp;<%= User.find(sol.user_id).username %>&nbsp;&nbsp;&nbsp;
+                        <button><%= link_to  "Solution", sol.attachment.attachment, :target => "_blank",    
+                         :disposition => 'inline' , class: "a-primary"%></button></p>
+</div>
+</div>
+</div>
+</div>
+<% end %>
+

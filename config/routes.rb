@@ -25,7 +25,11 @@ get '/profile/:user_id' => 'users#profile', as: 'user_profile'
 
 get '/MyPostedProblems/:user_id' => 'users#myPostedProblems' , as: 'user_posted_problems'
 
+get '/MyPostedSolutions' => 'users#myPostedSolutions' , as: 'user_posted_solutions'
+
 get '/viewRequests/:prob_id' => 'users#viewRequests', as: 'view_requests'
+
+get '/sentRequests/' => 'users#sentRequests', as: 'user_sent_requests'
 
 get '/grantAccess/:request_id' => 'users#grantAccess', as: 'grant_access'
 

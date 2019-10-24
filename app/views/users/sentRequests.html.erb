@@ -1,46 +1,31 @@
-
-
-
-
 <div class="fixed">
         <div class="hero-info">
             <br>
             <br>
-        <h2 align = "center">View Requests</h2>
+        <h2>Sent Requests</h2>
         <table class="table table-striped table-blue">
     <thead>
     <tr>
       <th class="text-center">#</th>
       <th class="text-center" >Problem Title</th>
       <th class="text-center">Access</th>
-      <th class="text-center">Requested user</th>
-
-
-
       
     </tr>
     </thead>
 
   <tbody>
     <% sno=1%>
-  
-<% @requests.each do |request| %>
-
-<% prob = Problem.find(request.problem_id) %>
+    <% @sent_requests.each do |req|%>
+    <% prob = Problem.find(req.problem_id) %>
     <tr>
       <th scope="row"><%= sno %></th>
       <td align="center"><%= link_to prob.prob_title, view_problem_path(prob) %></td>
 
-      <td align="center"> 
-      	<% if request.grant_access != true %>
-		<%= link_to "Grant Access", grant_access_path(request) %>
-		<% else %>
-		GRANTED
-		<% end %>
-      </td>
-      <td align="center" >
-      	<%= link_to(User.find(request.user_id).username, user_profile_path(request.user_id)) %>
-
+      <td align="center"> <% if req.grant_access %>
+        GRANTED
+        <% else %>
+        NOT GRANTED YET
+        <% end %>
       </td>
       
     </tr>
