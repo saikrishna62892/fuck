@@ -160,6 +160,15 @@ end
 
 
   end
+  def myPostedSolutions
+      @user = current_user
+      @posted_solutions = @user.solutions
+     # @prob = nil
+  end
+  def sentRequests
+      @user = current_user
+      @sent_requests = @user.request_accesses
+  end
 
   def viewRequests
     @problem = Problem.find(params[:prob_id])

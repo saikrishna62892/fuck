@@ -19,6 +19,8 @@ html {
 }
 
 
+
+
 body {
     height: 100%;
 
@@ -29,6 +31,8 @@ body {
   line-height: 2;
   color: gray;
   background: #f7f6f9 }
+
+  
 
 .avatarwrap {
   display: inline-block;
@@ -173,7 +177,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
   z-index: -1;
   color: #818181;
   display: block;
