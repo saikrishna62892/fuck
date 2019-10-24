@@ -1,0 +1,30 @@
+ <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <div class="container" align="center">
+                    <h2 class="title" align="center">Admin!</h2>
+
+
+
+                        <%= form_for(:session, url: adminlogin_path) do |form| %>
+                        
+                        <div class="container" align="center">
+                            <label class="label"><strong>Username: </strong></label>
+                                <%= form.text_field :adminame , class: "form-container", placeholder: "adminame"%>
+                        </div>                     
+                       
+                       <div class="container" align="center">
+                            <label class="label"><strong>Your Password:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                                <%= form.password_field :password , class: "form-container" , placeholder: "Password.."%>
+                        </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+                        
+                    <%end%>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+

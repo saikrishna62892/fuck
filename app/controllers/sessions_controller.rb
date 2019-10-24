@@ -23,4 +23,25 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+
+ def acreate
+
+  temp={adminame: params[:session][:adminame], password: params[:session][:password]}
+  @admin = Admin.find_by(temp)
+  if @admin.present?
+    @id = alog_in @admin
+    redirect_to '/admins/show/'+@id.to_s
+  else
+    # flash[:danger] = "Invalid Name/password Combination"
+    redirect_to '/admins/index' 
+  end
+  end
+
+  def adestroy
+    #debugger
+    alog_out
+    redirect_to root_url
+  end
+
+
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admins/index' => 'admins#index', as: 'admin'
 get 'sessions/new'  
 root 'users#index'
 get '/wall' => 'users#wall',as: 'wall'
@@ -10,6 +11,9 @@ get '/users' => 'users#users',as: 'users'
 get '/signup'=>'users#signup' ,as: 'signup'
 
 post '/signningUp' => 'users#signningUp', as: 'signningUp'
+
+post '/admins/index' => 'sessions#acreate', as: 'adminlogin'
+get '/admins/show/:id', to: 'admins#show'
 
 get '/verifier/:user_id/:otp' => 'users#verifier'
 
@@ -33,6 +37,10 @@ get '/users/debug2' => 'users#debug2'
 post '/login'=>'sessions#create' ,as: 'login'
 
 get '/logout' => 'sessions#destroy', as: 'logout'
+
+post '/alogin'=>'sessions#acreate' ,as: 'alogin'
+
+get '/alogout' => 'sessions#adestroy', as: 'alogout'
 
 
 

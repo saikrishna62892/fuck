@@ -19,4 +19,29 @@ def logged_in?
     @current_user = nil
   end
 
+
+
+
+
+
+
+  def alog_in(admin)
+    session[:admin_id] = admin.id
+  end
+
+def acurrent_admin
+    if session[:admin_id]
+      @current_admin ||= Admin.find_by(id: session[:admin_id])
+    end
+  end
+
+def alogged_in?
+    !current_admiin.nil?
+  end
+
+  def alog_out
+    session.delete(:admin_id)
+    @current_admin = nil
+  end
+
 end
