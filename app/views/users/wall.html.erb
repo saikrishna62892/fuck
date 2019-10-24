@@ -8,10 +8,11 @@
   <%= check_box 'miscellaneous', 'result', {}, 1, 0 %>&nbsp;<strong>Miscellaneous</strong>
   &nbsp;<%= form.select :branch, ["cse","mech","civil"],{include_blank: "Branch"},{ class: 'sample'}%>
   &nbsp;<%= form.select :difficulty, ["easy","medium","hard"],{include_blank: "Difficulty"},{class: 'sample' }%>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">search</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= form.submit 'Search'%>
+  <hr align="center" width="100%">
 </div>
   <% end %>
-
  <div class="wrapper wrapper--w960">
             <div class="card card-4">
                 <div class="card-body">

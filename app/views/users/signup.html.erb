@@ -1,43 +1,45 @@
-
-
+<marquee behavior="scroll" direction="left">Welcome to Signup section after successfull signup, please verify your account by clicking on the link provided in your email</marquee>
+<br>
  <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
+                    <div class="container" align="center">
                     <h2 class="title" align="center">SignUp!</h2>
+
                         <%= form_with scope: :signup, url:signningUp_path, local: true do |form| %>
                         
-                        <div class="container">
+                        <div class="container" align="center">
                             <label class="label"><strong>Username: </strong></label>
                                 <%= form.text_field :username , class: "form-container", placeholder: "Username"%>
                         </div>
-                        <div class="container">
-                            <label class="label">Firstname: </label>
-                                <%= form.text_field :firstname , class: "form-container" , placeholder: "Firstname",rows: "3",cols:"50"%>
+                        <div class="container" align="center">
+                            <label class="label"><strong>Firstname:</strong> </label>
+                                <%= form.text_field :firstname , class: "form-container" , placeholder: "Firstname"%>
                         </div>  
 
-                         <div class="container">
-                            <label class="label">Lastname: </label>
+                         <div class="container" align="center">
+                            <label class="label"><strong>Lastname:</strong> </label>
                                 <%= form.text_field :lastname , class: "form-container" , placeholder: "Lastname",rows: "3",cols:"50"%>
                         </div>  
-                        <div class="container"><b>Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><%= form.radio_button :gender, 'Male' %> Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.radio_button :gender, 'individual' %> Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.radio_button :gender, 'individual' %> Others</div>
-                    <div class="container">
-                            <label class="label">DOB: </label>
-                                <%= form.date_field :dob ,class: "input--style-4" %>
+                        <div class="container" align="center"><b>&nbsp;&nbsp;&nbsp;&nbsp;Gender:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><%= form.radio_button :gender, 'Male' %> Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.radio_button :gender, 'individual' %> Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="container" align="center">
+                            <label class="label"><strong>DOB:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                                <%= form.date_field :dob ,class: "input--style-4" , placeholder: "Date"%>
                         </div>
 
 
-                    <div class="container">
-                            <label class="label">Email: </label>
-                                <%= form.email_field :email ,class: "input--style-4" %>
+                    <div class="container" align="center">
+                            <label class="label"><strong>Email address:</strong>&nbsp;&nbsp;&nbsp; </label>
+                                <%= form.email_field :email ,class: "form-container" , placeholder: "Email.."%>
                         </div>
 
-                       <div class="container">
-                            <label class="label">Password: </label>
-                                <%= form.password_field :password , class: "input--style-4" ,rows: "3",cols:"50"%>
+                       <div class="container" align="center">
+                            <label class="label"><strong>Your Password:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                                <%= form.password_field :password , class: "form-container" , placeholder: "Password.."%>
                         </div>
-                        <div class="container">
-                            <label class="label">Confirm Password: </label>
-                                <%= form.password_field :password_confirmation , class: "input--style-4" ,rows: "3",cols:"50"%>
+                        <div class="container" align="center">
+                            <label class="label"><strong>Confirm Password: </strong></label>
+                                <%= form.password_field :password_confirmation , class: "form-container" , placeholder: "Confirm Password.."%>
                         </div>  
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
@@ -46,6 +48,7 @@
                     <%end%>
                 </div>
             </div>
-            <br>
+        </div>
+        <br>
     </div>
 

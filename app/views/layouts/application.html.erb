@@ -19,10 +19,11 @@
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   
-  <%if(current_user.present?) %>
+  
   <%= link_to('Wall',wall_path) %>
   <%= link_to('Post a Problem',post_problem_path) %>
   <%= link_to('Users',users_path) %>
+  <%if(current_user.present?) %>
   <%= link_to('View Profile', user_profile_path(current_user)) %>
   <%= link_to('Edit Profile', user_edit_profile_path(current_user)) %>
   <%= link_to('My Posted Problems', user_posted_problems_path(current_user)) %>
@@ -40,12 +41,12 @@
 
         <a class="active" href="/">Home</a>
         <a href="/signup">Signup</a>
-        <div class="search-container">
+        <!--<div class="search-container">
         <%= form_with scope: :home_search, local: true, url:'/home_search' do |form| %>
         <%= form.text_field :search, placeholder: "Google Custom Search" %>
         <button type="submit" target="_blank"><i class="fa fa-search"></i></button>
         <% end %>
-  </div>
+  </div>-->
 <% if !logged_in? %>
         <div class="dropdown1">
             <button onclick="myFunction()" class="dropbtn1">LOGIN</button>

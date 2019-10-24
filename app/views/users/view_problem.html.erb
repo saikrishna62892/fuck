@@ -5,23 +5,24 @@
 <a href="https://docs.google.com/gview?url=<%=  u @view.attachment.attachment %>&embedded=true">Your Pdf Viewer</a>
 <%= @view.tags %>
 <a href="https://docs.google.com/gview?url={#{@view.attachment.attachment}}&embedded=true">Youer</a>-->
+<body style="background-color: #f7f6f9;">
 <br>
-        <div class="wrapper wrapper--w960">
+        <div class="wrapper wrapper--w680">
             <div class="card card-4">
-                <div class="card-body">
+                <div class="card-body" >
                     <center><h2 class="title"><strong><%= @view.prob_title %></strong></h2></center>
                          <p align="right"><strong> Posted by:&nbsp;&nbsp;</strong><%= User.find(@view.user_id).username %></p>
                         <p><strong> SUBJECT&nbsp;:&nbsp;</strong><%= @view.prob_subject %></p>
                         <p><strong> DESCRIPTION&nbsp;:&nbsp;</strong><%= @view.prob_description %></p>
                         <p><strong> TAGS&nbsp;:&nbsp;</strong></p>
                         <% tag=Tag.find_by(problem_id: @prob_id)%>
-                        <strong> Payment&nbsp;:&nbsp;</strong><%= tag.payment %>
-                        <strong> Internship&nbsp;:&nbsp;</strong><%= tag.internship %>
-                        <strong> Urgency&nbsp;:&nbsp;</strong><%= tag.urgency %>
-                        <strong> Miscellaneous&nbsp;:&nbsp;</strong><%= tag.miscellaneous %>
-                        <strong> Branch&nbsp;:&nbsp;</strong><%= tag.branch %>
-                        <strong> Difficulty&nbsp;:&nbsp;</strong><%= tag.difficulty %>
-                        <strong> Task allotement&nbsp;:&nbsp;</strong><%= tag.dot%>
+                        <strong> Payment&nbsp;:&nbsp;</strong><%= tag.payment %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong> Internship&nbsp;:&nbsp;</strong><%= tag.internship %><br>
+                        <strong> Urgency&nbsp;:&nbsp;</strong><%= tag.urgency %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong> Miscellaneous&nbsp;:&nbsp;</strong><%= tag.miscellaneous %><br>
+                        <strong> Branch&nbsp;:&nbsp;</strong><%= tag.branch %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong> Difficulty&nbsp;:&nbsp;</strong><%= tag.difficulty %><br>
+                        <strong> Task allotement&nbsp;:&nbsp;</strong><%= tag.dot%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <strong> Deadline&nbsp;:&nbsp;</strong><%= tag.deadline %>
                         <br><br>
                         <p><strong> ATTACHMENT&nbsp;:&nbsp;</strong>
@@ -40,15 +41,18 @@
                     </div>
 
         </div>
+        <br>
+        <% if RequestAccess.find_by(user_id: current_user.id,problem_id: @view.id).present? %>
+        <% if RequestAccess.find_by(user_id: current_user.id,problem_id: @view.id).grant_access %>
         <%= form_with scope: :solution, url:post_solution_path(@view), local: true do |form| %>
 
-        <div class="container">
-            <label class="label"><b>Progress:</b></label>
+       <div class="container">
+        <label class="label"><b>Progress:&nbsp;&nbsp;&nbsp;</b></label>
                 <%= form.text_field :progress , class: "input--style-4" , placeholder: "status of solution..."%>
         </div>
         <div class="container">
             <label class="label"><b>Comments:</b></label>
-                <%= form.text_area :comment,class: "input--style-4" %>
+                <%= form.text_area :comment,class: "input--style-4" ,placeholder: "Comments(if any)..."%>
         </div>
 
         <div class="container">
@@ -56,9 +60,11 @@
                 <%= form.file_field :attachment ,class: "input--style-4" %>
          </div>
          <div  align="center">
-            <button type="submit">Submit</button>
-        </div>
-         <%end%>         
+            <div align="center"><%= form.submit 'Submit'%></div>
+         <% end%> 
+         <% end %>
+         <% end %>
+           
 
            
 
