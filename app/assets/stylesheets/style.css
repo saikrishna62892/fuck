@@ -515,8 +515,8 @@ input[type=submit]:hover {
 }
  /* Style inputs, select elements and textareas */
 input[type=text], textarea{
-  width: 85.9%;
-  padding: 5px;
+  width: 50%;
+  padding: 0px;
   border: 2px solid #ccc;
   border-radius: 2px;
   box-sizing: border-box;

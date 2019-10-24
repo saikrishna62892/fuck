@@ -140,12 +140,12 @@ function closeNav() {
 <div class="footer">
   <div class="row">
   <div class="columndiv1">
-    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
     <small>&copy CopyRight 2019 . All rights reserved.</small>
   </div>
   <div class="columndiv2">
   <br>
-  <a href="/index"><p style="color:white;margin-bottom:0px;"><b>About PSP</b></p></a>
+  <a href="/index"><p style="color:white;margin-bottom:0px;"><b>About WorkCollab</b></p></a>
   <a href="/wall"><p style="color:white;margin-bottom: 0px;">Wall</p></a>
   <a href="/post_problem"><p style="color:white;margin-bottom: 0px;">Post a Problem</p></a>
   <a href="/users"><p style="color:white;margin-bottom: 0px;">Users</p></a>
@@ -157,7 +157,7 @@ function closeNav() {
     <p align="center"> <b>Suggestion Box</b></p>
     <%= form_with scope: :suggestion_box, local: true, url:'/suggestion_box' do |form| %>
     <p>Username &nbsp;&nbsp;<%= form.text_field :user_name, placeholder: "Your Username.." %></p>
-    <p>Subject &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.text_area :subject, placeholder: "Write something..",rows: "3",cols:"30" %></p>
+    <p>Subject &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.text_area :subject, placeholder: "Write something..", class: "input--style-4",rows: "2",cols:"30" %></p>
     <div align="center"><%= form.submit 'Submit'%></div>
   <% end %>
   </div>
