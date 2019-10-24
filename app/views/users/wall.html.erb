@@ -1,4 +1,13 @@
-
+<style>
+  select{
+  width: 20%;
+  padding: 0px;
+  border: 2px solid #ccc;
+  border-radius: 0px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+</style>
 <%= render 'flash_messages' %>
  <div class="container" align="center" style="border-color: black;">
  <%= form_with scope: :filter_tags, url:filter_tags_path, local: true do |form| %>

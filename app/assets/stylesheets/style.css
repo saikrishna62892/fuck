@@ -471,7 +471,7 @@ input[type=submit]:hover {
    ========================================================================== */
 .btn {
   display: inline-block;
-  line-height: 50px;
+  
   padding: 0 25px;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
@@ -527,13 +527,14 @@ input[type=text], textarea{
   resize: vertical;
 }
 select{
-  width: 15%;
+  width: 30%;
   padding: 0px;
   border: 2px solid #ccc;
   border-radius: 0px;
   box-sizing: border-box;
   resize: vertical;
 }
+
 /* Style the label to display next to the inputs */
 label {
   padding: 12px 12px 12px 0;
