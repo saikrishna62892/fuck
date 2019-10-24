@@ -118,8 +118,7 @@ end
       @tag.save
       redirect_to wall_path,success: "Problem Created Succesfully!!"
     else
-      flash[:danger]="Something went wrong!!"
-      render '/post_problem'
+      redirect_to post_problem_path,danger: "Something went wrong, Please Try Again!!"
     end
     #@pdf =@problem.attachment.attachment
   end
