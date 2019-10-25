@@ -50,7 +50,10 @@ test:
 #
 production:
   <<: *default
-  database: psp_production
-  username: psp
-  password: <%= ENV['PSP_DATABASE_PASSWORD'] %>
-   url: <%= ENV['DATABASE_URL'] %>
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ENV['psp_development'] %>
+  username: <%= ENV['root'] %>
+  password: <%= ENV['Sai@62892'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>

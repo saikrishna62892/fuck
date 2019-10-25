@@ -17,13 +17,18 @@
         <% end %>
   </div>
 </center>
+
   	<% @users.each do |user| %>
-  	<div class="carduser">
-  	<center><div class="containercard">
-  	<%= image_tag(user.avatar,:size => "200x200")%>
-    <h4><b><%= user.username %></b></h4> 
-    <p><%= user.email %></p> 
-    </div></center>
-	</div><br>
+    <div class="halign">
+  	   <div class="carduser">
+          <center>
+            <div class="containercard">
+  	         <%= image_tag(user.avatar,:size => "200x200")%>
+                <h4><b><%= user.username %></b></h4> 
+                <p><%= user.email %></p> 
+                  </div>
+          </center>
+	       </div>
+    </div>
 
     <% end %>

@@ -118,7 +118,7 @@ end
       @tag.save
       redirect_to wall_path,success: "Problem Created Succesfully!!"
     else
-      redirect_to post_problem_path,danger: "Something went wrong, Please Try Again!!"
+      render 'post_problem'
     end
     #@pdf =@problem.attachment.attachment
   end
