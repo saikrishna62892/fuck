@@ -1,13 +1,21 @@
 class SessionsController < ApplicationController
+
+skip_before_action :require_login, only: [:create, :acreate]
+
   def new
   end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:session][:password]) 
       # Log the user in and redirect to the user's show page.
+      if user.verified == true
       log_in user
       redirect_to wall_path
+    else
+      flash[:danger] = "Your account has not been verified yet! Check your mail!"
+      redirect_to root_url
+    end
 
 
     else
