@@ -148,6 +148,7 @@ end
   def view_problem
     @prob_id = params[:id]
     @view = Problem.find(@prob_id)
+    @view.update_attributes(:views => (@view.views+1))
 
 
   end
@@ -223,8 +224,18 @@ end
         end
       end
   end
-
-
+  def upvote
+    sol_id = params[:id]
+    @sol = Solution.find(sol_id)
+    @sol.update_attributes(:upvote => @sol.upvote+1)
+    redirect_to view_problem_path(@sol.problem_id)
+  end
+  def downvote
+    sol_id = params[:id]
+    @sol = Solution.find(sol_id)
+    @sol.update_attributes(:downvote => @sol.downvote+1)
+    redirect_to view_problem_path(@sol.problem_id)
+  end
   private
 	def home_search_params
 		params.require(:home_search).permit(:search)

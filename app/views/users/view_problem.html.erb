@@ -5,25 +5,26 @@
 <a href="https://docs.google.com/gview?url=<%=  u @view.attachment.attachment %>&embedded=true">Your Pdf Viewer</a>
 <%= @view.tags %>
 <a href="https://docs.google.com/gview?url={#{@view.attachment.attachment}}&embedded=true">Youer</a>-->
+
 <body style="background-color: #f7f6f9;">
 <br>
-        <div class="wrapper wrapper--w680">
+        <div class="wrapper wrapper--w780">
             <div class="card card-4">
                 <div class="card-body" >
                     <center><h2 class="title"><strong><%= @view.prob_title %></strong></h2></center>
-                         <p align="right"><strong> Posted by:&nbsp;&nbsp;</strong><%= User.find(@view.user_id).username %></p>
+                         <p align="right"><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(@view.user_id).username, user_profile_path(@view.user_id) %></p>
                         <p><strong> SUBJECT&nbsp;:&nbsp;</strong><%= @view.prob_subject %></p>
                         <p><strong> DESCRIPTION&nbsp;:&nbsp;</strong><%= @view.prob_description %></p>
                         <p><strong> TAGS&nbsp;:&nbsp;</strong></p>
                         <% tag=Tag.find_by(problem_id: @prob_id)%>
-                        <strong> Payment&nbsp;:&nbsp;</strong><%= tag.payment %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="columndiv4"><strong> Payment&nbsp;:&nbsp;</strong><%= tag.payment %><br>
                         <strong> Internship&nbsp;:&nbsp;</strong><%= tag.internship %><br>
-                        <strong> Urgency&nbsp;:&nbsp;</strong><%= tag.urgency %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <strong> Miscellaneous&nbsp;:&nbsp;</strong><%= tag.miscellaneous %><br>
-                        <strong> Branch&nbsp;:&nbsp;</strong><%= tag.branch %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong> Urgency&nbsp;:&nbsp;</strong><%= tag.urgency %><br>
+                        <strong> Miscellaneous&nbsp;:&nbsp;</strong><%= tag.miscellaneous %><br></div>
+                        <div class="columndiv4"><strong> Branch&nbsp;:&nbsp;</strong><%= tag.branch %><br>
                         <strong> Difficulty&nbsp;:&nbsp;</strong><%= tag.difficulty %><br>
-                        <strong> Task allotement&nbsp;:&nbsp;</strong><%= tag.dot%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <strong> Deadline&nbsp;:&nbsp;</strong><%= tag.deadline %>
+                        <strong> Task allotement&nbsp;:&nbsp;</strong><%= tag.dot%><br>
+                        <strong> Deadline&nbsp;:&nbsp;</strong><%= tag.deadline %></div>
                         <br><br>
                         <p><strong> ATTACHMENT&nbsp;:&nbsp;</strong>
                         <button class="btn btn--radius-2 btn--green"><%= link_to "View Problem(PDF)", @view.attachment.attachment, :target => "_blank",    
@@ -31,20 +32,35 @@
                         <hr>
                         <center><p><strong style="border: 1px solid; border-radius: 2px; padding: 10px"> SOLUTION(S):&nbsp;&nbsp;</strong><br><br></p></center>
                         <% @view.solutions.each do |sol| %>
-                         <%= sol.progress %> &nbsp;&nbsp;&nbsp;<%= User.find(sol.user_id).username %>&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn--radius-2 btn--green"><%= link_to "View Solution(PDF)", sol.attachment.attachment, :target => "_blank",    
-                         :disposition => 'inline' %></button>
-                        <hr>
+                         <div class="columndiv3"><strong>Status : </strong><%= sol.progress %><br>
+                         <strong>Comment(s) : </strong><%= sol.comment %>&nbsp;&nbsp;&nbsp;</div>
+                         <div class="columndiv3"><p><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(@view.user_id).username, user_profile_path(@view.user_id) %></p>
+                            <button class="btn btn--radius-2 btn--green"><%= link_to "View Solution(PDF)", sol.attachment.attachment, :target => "_blank",    
+                         :disposition => 'inline' %></button></div>
+                        <div class="columndiv6"><%= form_with scope: :upvote, url:upvote_path(sol), local: true do |form| %>
+                        <button class="like" type="submit">
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        </button>&nbsp;<%= sol.upvote %>
                         <% end %>
+                        <%= form_with scope: :downvote, url:downvote_path(sol), local: true do |form| %>
+                        <button class="dislike">
+                            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                        </button>&nbsp;<%= sol.downvote %>
+                        <% end %>
+                        </div>
+                        
+                        <% end %>
+                    <hr>
 
                         </div>
                     </div>
 
         </div>
         <br>
-        <div class="container" align="center">
+        
         <% if RequestAccess.find_by(user_id: current_user.id,problem_id: @view.id).present? %>
         <% if RequestAccess.find_by(user_id: current_user.id,problem_id: @view.id).grant_access %>
+        <div class="container" align="center">
         <%= form_with scope: :solution, url:post_solution_path(@view), local: true do |form| %>
 
        
@@ -62,11 +78,8 @@
          </div>
          <div  align="center">
             <div align="center"><%= form.submit 'Submit'%></div>
+        </div>
          <% end%> 
          <% end %>
          <% end %>
-           
-
-           
-
 <br>

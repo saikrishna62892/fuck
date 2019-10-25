@@ -57,5 +57,8 @@ post '/filter_tags' => 'users#filter_tags',as: 'filter_tags'
 get '/viewproblem/:id' => 'users#view_problem',as:'view_problem'
 post '/postsolution/:prob_id' => 'users#post_solution',as:'post_solution'
 get '/request_access/:prob_id' => 'users#request_access',as:'request_access'
+post '/upvote/:id' => 'users#upvote', as: 'upvote'
+post '/downvote/:id' => 'users#downvote', as: 'downvote'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

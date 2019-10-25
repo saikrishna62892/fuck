@@ -25,7 +25,6 @@
   <%= link_to('Users',users_path) %>
   <%if(current_user.present?) %>
   <%= link_to('View Profile', user_profile_path(current_user)) %>
-  <%= link_to('Edit Profile', user_edit_profile_path(current_user)) %>
   <%= link_to('My Posted Problems', user_posted_problems_path(current_user)) %>
   <%= link_to('My Posted Solutions', user_posted_solutions_path) %>
   <%= link_to('My Sent Requests', user_sent_requests_path) %>
@@ -152,7 +151,6 @@ function closeNav() {
   <a href="/post_problem"><p style="color:white;margin-bottom: 0px;">Post a Problem</p></a>
   <a href="/users"><p style="color:white;margin-bottom: 0px;">Users</p></a>
   <a href="/view"><p style="color:white;margin-bottom: 0px;">View Profile</p></a>
-  <a href="/edit"><p style="color:white;margin-bottom: 0px;">Edit Profile</p></a>
   <a href="/logout"><p style="color:white;margin-bottom: 0px;">Logout</p></a>
   </div>
   <div class="columndiv3">
