@@ -1,4 +1,6 @@
+<%= render 'flash_messages' %>
 <strong><marquee behavior="scroll" direction="left">Welcome to Signup section after successfull signup, please verify your account by clicking on the link provided in your email</marquee></strong>
+
 <br>
  <div class="wrapper wrapper--w680">
             <div class="card card-4">
@@ -21,7 +23,7 @@
 
 
 
-                        <%= form_with scope: :signup, url:signningUp_path, local: true do |form| %>
+                        <%= form_with  scope: :signup, url:signningUp_path, local: true do |form| %>
                         
                         <div class="container" align="center">
                             <label class="label"><strong>Username: </strong></label>
@@ -40,6 +42,11 @@
                     <div class="container" align="center">
                             <label class="label"><strong>DOB:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
                                 <%= form.date_field :dob ,max: 2.days.ago,class: "input--style-4" , placeholder: "Date"%>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="label">Upload image: </label>
+                                <%= form.file_field :avatar ,class: "input--style-4" %>
                         </div>
 
 

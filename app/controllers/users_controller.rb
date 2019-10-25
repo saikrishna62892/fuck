@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
 	add_flash_types :danger,:info, :success,:warning
   @global_problem = nil
+
+skip_before_action :require_login, only: [:index, :signup, :signningUp, :verifier]
+
   def index
-  	flash[:info] = "Welcome to PSP site!!"
+  	#flash[:info] = "Welcome to PSP site!!"
   end
   def users
     @users=User.all
@@ -61,20 +64,28 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:user_id])
     if @user.otp == params[:otp]
-      @user.verified = true;
-      redirect_to user_edit_profile_url(@user)
+      @user.verified = true
+      @user.save
+      
+      #  @user.save
+      redirect_to wall_url, success: "You have been Verified!"
+
     end
 
   end
 
   def profile
 
-  @user =User.find_by(id: params[:user_id])
+  @user = current_user
   end
 
 def edit
-
-@user =User.find_by(id: params[:user_id])
+if params[:user_id] == current_user.id.to_s
+@user =  current_user
+else
+  
+  redirect_to user_edit_profile_path(current_user), danger: "You are not authorized to Access other user's page"
+end
 
 end
 
@@ -140,6 +151,7 @@ end
       if value!="0" && value!=""
         tags1 = tags1.public_send(key, value)
       end
+
     end
     problemids=tags1.select(:problem_id)
     problems=Problem.where(:id => problemids)
@@ -257,7 +269,7 @@ end
   end
 
   def signup_params
-    params.require(:signup).permit(:username,:firstname,:lastname,:dob,:email,:password,:password_confirmation,:gender)
+    params.require(:signup).permit(:username,:firstname,:lastname,:dob,:avatar,:email,:password,:password_confirmation,:gender)
   end
   def editform_params
     params.require(:editform).permit(:username,:firstname,:lastname,:dob,:email,:avatar,:qualification,:skills,:about)
