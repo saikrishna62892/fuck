@@ -11,7 +11,9 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'mysql2', '>= 0.4.4'
+group :development do
+  gem 'mysql2', '>= 0.4.4'
+end
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
