@@ -17,7 +17,7 @@ default: &default
 
 development:
   adapter: mysql2
-  encoding: utf8
+  encoding: unicode
   timeout: 5000
   database: psp_development
   host: localhost
