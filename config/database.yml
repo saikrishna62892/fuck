@@ -16,13 +16,9 @@ default: &default
   
 
 development:
-  adapter: mysql2
-  encoding: unicode
-  timeout: 5000
+  <<: *default
+  encoding: utf8
   database: psp_development
-  host: localhost
-  username: root
-  password: "Sai@62892"
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
