@@ -45,22 +45,11 @@ skip_before_action :require_login, only: [:index, :signup, :signningUp, :verifie
 
   def signningUp
     @user = User.new(signup_params)
-    respond_to do |format|
-
-    # We change the following line
-    if verify_recaptcha(model: @user) && @user.save
-      format.html { redirect_to @user, notice: 'user was successfully created.' }
-      format.json { render :show, status: :created, location: @user }
-    else
-      format.html { render :new }
-      format.json { render json: @user.errors, status: :unprocessable_entity }
-    end
     @user.otp = rand 100000..999999
     if @user.save  
     UserMailer.email_verifier(@user).deliver_now
     flash[:success]="Signup successful"
     redirect_to root_url    
-
     else
 
       flash[:danger]="Signup failed"
