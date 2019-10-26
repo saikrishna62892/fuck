@@ -13,14 +13,12 @@
 
 .dropbtn1:hover, .dropbtn1:focus {
   background-color: #2980B9;
-  z-index: 1230000000;
   x-index: 45000;
 }
 
 .dropdown1 {
   
   display: inline-block;
-  z-index: 123000000000;
 }
 
 .dropdown-content1 {
@@ -38,7 +36,6 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  z-index: 1230000;
 }
 
 

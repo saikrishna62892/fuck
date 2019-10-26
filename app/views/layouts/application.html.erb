@@ -103,6 +103,8 @@
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
+  document.getElementById("myDropdown1").style.visibility='visible';
+  document.getElementById("myDropdown1").style.display='block';
   document.getElementById("myDropdown1").classList.toggle("show1");
 }
 
@@ -115,6 +117,8 @@ window.onclick = function(event) {
       var openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show1')) {
         openDropdown.classList.remove('show1');
+        document.getElementById("myDropdown1").style.display='none';
+        document.getElementById("myDropdown1").style.visibility='hidden';
       }
     }
   }
