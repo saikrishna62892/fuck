@@ -6,7 +6,8 @@ skip_before_action :require_login, only: [:index, :signup, :signningUp, :verifie
 
   def index
 
-  end
+
+ end
   def users
     @users=User.all
   end
@@ -272,12 +273,15 @@ def repost
 end
 def satisfied
   @sol = Solution.find(params[:sol_id])
-  render plain: @sol.inspect
-  if(params[:button_id]==1)
-
-  else
-
+  button = params[:button_id]
+  if(button=='1')
+    @sol.update(:satisfaction => "Satisfied")
   end
+  if(button=='2')
+    @sol.update(:satisfaction => "Dis-satisfied")
+  end
+  @sol.save
+  redirect_to view_problem_path(@sol.problem_id)
 end
 
 
