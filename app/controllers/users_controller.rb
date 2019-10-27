@@ -46,7 +46,7 @@ skip_before_action :require_login, only: [:index, :signup, :signningUp, :verifie
   def signningUp
     @user = User.new(signup_params)
     @user.otp = rand 100000..999999
-    if @user.save  
+    if verify_recaptcha(model: @user) && @user.save  
     UserMailer.email_verifier(@user).deliver_now
     flash[:success]="Signup successful"
     redirect_to root_url    

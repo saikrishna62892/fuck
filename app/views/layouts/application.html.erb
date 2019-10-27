@@ -12,6 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/logindrop.css">
   
@@ -39,7 +40,8 @@
 <div class="topnav sticky-top">
   <div id="main">
         <button class="openbtn" style="float: left"onclick="openNav()">☰ </button> 
-        <a class="inactive" style="float: left" href="/"><img src="assets/psp.png" alt="PSP"></a>
+        <a class="inactive" style="float: left" href="/">
+<%= image_tag "psp.png" %></a>
 
         <a class="active" href="/">Home</a>
         <a href="/signup">Signup</a>
@@ -108,20 +110,9 @@ function myFunction() {
   document.getElementById("myDropdown1").classList.toggle("show1");
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn1')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content1");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show1')) {
-        openDropdown.classList.remove('show1');
-        document.getElementById("myDropdown1").style.display='none';
-        document.getElementById("myDropdown1").style.visibility='hidden';
-      }
-    }
-  }
+window.onclick = function(event){
+  window.addEventListener("click", function(event) {
+});
 }
 
 function openNav() {

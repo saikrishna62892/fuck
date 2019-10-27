@@ -1,4 +1,10 @@
-
+<script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '6LdJtL8UAAAAAIFLKEdWSDQf_kfuHR52yKL1_jeI'
+        });
+      };
+    </script>
 <%= render 'flash_messages' %>
 <strong><marquee behavior="scroll" direction="left">Welcome to Signup section after successfull signup, please verify your account by clicking on the link provided in your email</marquee></strong>
 
@@ -21,9 +27,6 @@
                         </ul>
                       </div>
                     <% end %>
-
-
-
                         <%= form_with  scope: :signup, url:signningUp_path, local: true do |form| %>
                         
                         <div class="container" align="center">
@@ -45,8 +48,8 @@
                                 <%= form.date_field :dob ,max: 2.days.ago,class: "input--style-4" , placeholder: "Date"%>
                         </div>
 
-                        <div class="input-group">
-                            <label class="label">Upload image: </label>
+                        <div class="container" align="center">
+                            <label class="label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upload image:</label>
                                 <%= form.file_field :avatar ,class: "input--style-4" %>
                         </div>
 
@@ -64,10 +67,14 @@
                             <label class="label"><strong>Confirm Password: </strong></label>
                                 <%= form.password_field :password_confirmation , class: "form-container" , placeholder: "Confirm Password.."%>
                         </div>  
-                        
-                        <div class="p-t-15" align="center">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                        </div>
+                         <form action="?" method="POST">
+                          <div class="g-recaptcha container" data-sitekey="6LdJtL8UAAAAAIFLKEdWSDQf_kfuHR52yKL1_jeI" align="center"></div>
+                          <br/>
+                          <center><input type="submit" value="Submit"></center>
+                        </form>
+                        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+                            async defer>
+                        </script>
                         
                     <%end%>
                 </div>
