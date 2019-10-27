@@ -31,17 +31,17 @@ def logged_in?
 
 def acurrent_admin
     if session[:admin_id]
-      @current_admin ||= Admin.find_by(id: session[:admin_id])
+      @acurrent_admin ||= Admin.find_by(id: session[:admin_id])
     end
   end
 
 def alogged_in?
-    !current_admiin.nil?
+    !acurrent_admin.nil?
   end
 
   def alog_out
     session.delete(:admin_id)
-    @current_admin = nil
+    @acurrent_admin = nil
   end
 
 end

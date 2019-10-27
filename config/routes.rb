@@ -14,6 +14,8 @@ post '/signningUp' => 'users#signningUp', as: 'signningUp'
 
 post '/admins/index' => 'sessions#acreate', as: 'adminlogin'
 get '/admins/show/:id', to: 'admins#show'
+get '/admins/monthly_report', to: 'admins#monthly_report'
+get '/admins/stat', to: 'admins#stat'
 
 get '/verifier/:user_id/:otp' => 'users#verifier'
 
@@ -54,6 +56,7 @@ get 'show_attachments' => 'users#show_attachments'
 
 get '/debug' => 'users#debug',as: 'debug'
 post '/filter_tags' => 'users#filter_tags',as: 'filter_tags'
+post '/afilter_tags' => 'admins#afilter_tags',as: 'afilter_tags'
 get '/viewproblem/:id' => 'users#view_problem',as:'view_problem'
 post '/postsolution/:prob_id' => 'users#post_solution',as:'post_solution'
 get '/request_access/:prob_id' => 'users#request_access',as:'request_access'

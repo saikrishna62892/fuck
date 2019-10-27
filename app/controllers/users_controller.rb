@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	add_flash_types :danger,:info, :success,:warning
   @global_problem = nil
   def index
-  	flash[:info] = "Welcome to PSP site!!"
+  	# flash[:info] = "Welcome to PSP site!!"
   end
   def users
     @users=User.all
@@ -118,7 +118,8 @@ end
       @tag.save
       redirect_to wall_path,success: "Problem Created Succesfully!!"
     else
-      redirect_to post_problem_path,danger: "Something went wrong, Please Try Again!!"
+      # flash[:danger]="Something went wrong!!"
+      render 'post_problem'
     end
     #@pdf =@problem.attachment.attachment
   end

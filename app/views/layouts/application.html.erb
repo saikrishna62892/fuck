@@ -39,7 +39,8 @@
 <div class="topnav sticky-top">
   <div id="main">
         <button class="openbtn" style="float: left"onclick="openNav()">☰ </button> 
-        <a class="inactive" style="float: left" href="/"><img src="assets/psp.png" alt="PSP"></a>
+        <%= link_to image_tag("psp.png"), '/',{:class=>"inactive" ,:style=>"float: left"} %>
+
 
         <a class="active" href="/">Home</a>
         <a href="/signup">Signup</a>
@@ -49,6 +50,7 @@
         <button type="submit" target="_blank"><i class="fa fa-search"></i></button>
         <% end %>
   </div>-->
+<% if !alogged_in? %>
 <% if !logged_in? %>
         <div class="dropdown1">
             <button onclick="myFunction()" class="dropbtn1">LOGIN</button>
@@ -75,16 +77,17 @@
 
   <div class="dropdown1">
             <%= link_to 'LOGOUT' , logout_path, class: "dropbtn1" %> 
-            
-
-                   
-
-
-
-
   </div>
+
   <% end %>
 </div>
+
+  <% else %>
+    <div class="dropdown1">
+            <%= link_to 'LOGOUT' , alogout_path, class: "dropbtn1" %> 
+  </div>
+<% end %>
+
 
        
   </div>

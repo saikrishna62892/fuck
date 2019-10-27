@@ -1,1 +1,4 @@
+<%= render 'flash_messages' %>
 <marquee behavior="scroll" direction="left">Welcome to WorkCollab, please SignUp/Login</marquee>
+<button class="btn btn--radius-2 btn--green"><%= link_to "Monthly_Report.pdf" , asset_path("Monthly_Report.pdf",skip_pipeline: true)%></button>
+<button class="btn btn--radius-2 btn--blue"><%= link_to "Problem Statistics" , asset_path("Problem_stat.pdf",skip_pipeline: true)%></button>

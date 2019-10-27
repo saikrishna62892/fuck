@@ -1,10 +1,23 @@
- <% render 'flash_messages' %>
+
  <br>
 
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title" align="center"><strong>POST A PROBLEM</strong></h2>
+
+                    <% if @problem %>
+                        <div id="error_explanation">
+                        <div class="alert alert-danger">
+                          The form contains <%= pluralize(@problem.errors.count, "error") %>.
+                        </div>
+                        <ul>
+                        <% @problem.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
                         <%= form_with scope: :problem, url:getProblemDetails_path, local: true do |form| %>
                         <div class="container">
                             <label class="label"><b>Title</b></label><br>
@@ -22,7 +35,7 @@
                             <b>Upload (img/pdf/docx) </b>&nbsp;<%= form.file_field :attachment %>
                         </div>
                         <div class="container">
-                               <b>Deadline </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.date_field :deadline  %>
+                               <b>Deadline </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.date_field :deadline ,min: -2.days.ago, max: 1.year.from_now  %>
                         </div>
 
                         <div class="container" style="margin: 0;">
