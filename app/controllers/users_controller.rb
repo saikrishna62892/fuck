@@ -27,10 +27,10 @@ skip_before_action :require_login, only: [:index, :signup, :signningUp, :verifie
   def suggestion_box
   	user_name=suggestion_box_params[:user_name]
   	subject=suggestion_box_params[:subject]
-  	@user = User.where(:user_name => user_name).first
+  	@user = User.where(:username => user_name).first
   	#render plain: @user.inspect
   	if @user==nil
-			redirect_to index_path, danger: "Username is not valid!!"
+			redirect_to index_path, danger: "Invalid Username!!"
 		else
 			SuggestionBoxMailer.suggestion(@user,subject).deliver_now
 			redirect_to index_path, info: "Thankyou for your valuable suggestion!!"
