@@ -32,8 +32,106 @@
                         <hr>
                         <center><p><strong style="border: 1px solid; border-radius: 2px; padding: 10px"> SOLUTION(S):&nbsp;&nbsp;</strong><br><br></p></center>
                         <% @view.solutions.each do |sol| %>
-                         <div class="columndiv3"><strong>Status : </strong><%= sol.progress %><br>
-                         <strong>Comment(s) : </strong><%= sol.comment %>&nbsp;&nbsp;&nbsp;</div>
+                            <% if sol.approve == false  && @view.user_id == current_user.id%>
+
+                                <div class="columndiv3"><strong>Progress : </strong><%= sol.progress %><br>
+                         <strong>Comment(s) : </strong><%= sol.comment %>&nbsp;&nbsp;&nbsp;<br>
+                         <strong>Status: </strong> 
+                            <% if sol.status == 'pending' %>
+                                <strong style="border: 1px solid; border-radius: 2px; padding: 3px; background: orange"> <%= sol.status %>&nbsp;&nbsp;</strong>
+                            <% else %>
+                                <strong style="border: 1px solid; border-radius: 2px; padding: 3px; background: green"> <%= sol.status %>&nbsp;&nbsp;</strong>
+                            <% end %>
+
+                        </div>
+
+
+                         <div class="columndiv3"><p><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(@view.user_id).username, user_profile_path(@view.user_id) %></p>
+                            <button class="btn btn--radius-2 btn--green"><%= link_to "View Solution(PDF)", sol.attachment.attachment, :target => "_blank",    
+                         :disposition => 'inline' %></button></div>
+                        <div class="columndiv6"><%= form_with scope: :upvote, url:upvote_path(sol), local: true do |form| %>
+                        <button class="like" type="submit">
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        </button>&nbsp;<%= sol.upvote %>
+                        <% end %>
+                        <%= form_with scope: :downvote, url:downvote_path(sol), local: true do |form| %>
+                        <button class="dislike">
+                            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                        </button>&nbsp;<%= sol.downvote %>
+                        <% end %>
+                        </div>
+                        <div class="container">
+                            
+                            <% if sol.status == 'pending' && @view.user_id == current_user.id %>
+                                <%= link_to 'Approve' ,  approve_path(sol.id)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <%= link_to 'Revert Access' , revert_path(@view.id, sol.user_id) %>
+                            <% end %>
+                            <% if sol.status == 'Completed' && @view.user_id == current_user.id %>
+                                <%= link_to 'Satisfied :)' , satisfied_path(sol.id,1) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <%= link_to 'Dis-Satified :(' , satisfied_path(sol.id,2) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                               
+
+                            <% end %>
+
+
+                        </div>
+            <% elsif sol.approve == true  && @view.user_id == current_user.id%>
+                                <div class="columndiv3"><strong>Progress : </strong><%= sol.progress %><br>
+                         <strong>Comment(s) : </strong><%= sol.comment %>&nbsp;&nbsp;&nbsp;<br>
+                         <strong>Status: </strong> 
+                            <% if sol.status == 'pending' %>
+                                <strong style="border: 1px solid; border-radius: 2px; padding: 3px; background: orange"> <%= sol.status %>&nbsp;&nbsp;</strong>
+                            <% else %>
+                                <strong style="border: 1px solid; border-radius: 2px; padding: 3px; background: green"> <%= sol.status %>&nbsp;&nbsp;</strong>
+                            <% end %>
+
+                        </div>
+
+
+                         <div class="columndiv3"><p><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(@view.user_id).username, user_profile_path(@view.user_id) %></p>
+                            <button class="btn btn--radius-2 btn--green"><%= link_to "View Solution(PDF)", sol.attachment.attachment, :target => "_blank",    
+                         :disposition => 'inline' %></button></div>
+                        <div class="columndiv6"><%= form_with scope: :upvote, url:upvote_path(sol), local: true do |form| %>
+                        <button class="like" type="submit">
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        </button>&nbsp;<%= sol.upvote %>
+                        <% end %>
+                        <%= form_with scope: :downvote, url:downvote_path(sol), local: true do |form| %>
+                        <button class="dislike">
+                            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                        </button>&nbsp;<%= sol.downvote %>
+                        <% end %>
+                        </div>
+                        <div class="container">
+                            
+                        <% if sol.status == 'pending' %>
+                                <%= link_to 'Approve' ,  approve_path(sol.id)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <%= link_to 'Revert Access' , revert_path(@view.id, sol.user_id) %>
+                            <% end %>
+                            <% if sol.status == 'completed'%>
+                                <%= link_to 'Satisfied :)' , satisfied_path(sol.id,1) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <%= link_to 'Dis-Satified :(' , satisfied_path(sol.id,2) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             
+
+                            <% end %>
+
+
+                        </div>
+
+                                <% else %>
+                                <h3> Else part</h3>
+                                                                <div class="columndiv3"><strong>Progress : </strong><%= sol.progress %><br>
+                         <strong>Comment(s) : </strong><%= sol.comment %>&nbsp;&nbsp;&nbsp;<br>
+                         <strong>Status: </strong> 
+                            <% if sol.status == 'pending' %>
+                                <strong style="border: 1px solid; border-radius: 2px; padding: 3px; background: orange"> <%= sol.status %>&nbsp;&nbsp;</strong>
+                            <% else %>
+                                <strong style="border: 1px solid; border-radius: 2px; padding: 3px; background: green"> <%= sol.status %>&nbsp;&nbsp;</strong>
+                            <% end %>
+
+                        </div>
+
+
                          <div class="columndiv3"><p><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(@view.user_id).username, user_profile_path(@view.user_id) %></p>
                             <button class="btn btn--radius-2 btn--green"><%= link_to "View Solution(PDF)", sol.attachment.attachment, :target => "_blank",    
                          :disposition => 'inline' %></button></div>
@@ -49,9 +147,14 @@
                         <% end %>
                         </div>
                         
+
+
+
+
+
+                            <% end %>
                         <% end %>
                     <hr>
-
                         </div>
                     </div>
 
@@ -71,7 +174,7 @@
             <label class="label"><b>Comments:</b></label>
                 <%= form.text_area :comment,class: "input--style-4" ,placeholder: "Comments(if any)..."%>
         </div>
-
+        <div class="container" align="center"><b>&nbsp;&nbsp;&nbsp;&nbsp;Solution Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><%= form.radio_button :status, 'pending' %> Pending&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.radio_button :status, 'completed' %> Completed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         <div class="container" align="center">
             <label class="label"><b>Upload pdf:</b></label>
                 <%= form.file_field :attachment ,class: "input--style-4" %>

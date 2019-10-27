@@ -1,0 +1,14 @@
+<br>
+
+        <div class="wrapper wrapper--w960">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title" align="center"><strong>Filtered Result</strong></h2>
+
+					<%= @problems.each do |pr| %>
+						<%= pr.prob_title %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	<br>

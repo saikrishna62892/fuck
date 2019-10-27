@@ -1,7 +1,43 @@
 
+<%= render 'flash_messages' %>
+
+
+
+<%= render 'flash_messages' %>
+
+</div>
+<div class="container2">
+	<%= image_tag "website.jpg" ,{style: "width: 100%; height:70%"}%></a>
+  <div class="centered2"><strong>One destination for all your queries</strong></div>
+</div>
+
+<style>
+.container2 {
+	font-size: 50px;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-shadow: 3px -4px #000;
+  transform: translate(-50%, -50%);
+}
+</style>
+
+
+<%= render 'flash_messages' %>
+<marquee behavior="scroll" direction="left">Welcome to WorkCollab, please SignUp/Login</marquee>
+<button class="btn btn--radius-2 btn--green"><%= link_to "Monthly_Report.pdf" , asset_path("Monthly_Report.pdf",skip_pipeline: true)%></button>
+<button class="btn btn--radius-2 btn--blue"><%= link_to "Problem Statistics" , asset_path("Problem_stat.pdf",skip_pipeline: true)%></button>
+
 
 <%= render 'flash_messages' %>
 <!-- LikeBtn.com BEGIN -->
                         <span class="likebtn-wrapper" data-i18n_like="Upvote" data-ef_voting="push" data-identifier="item_1" data-counter_frmt="comma" data-popup_disabled="true" data-share_enabled="false" data-loader_show="true"></span>
                         <script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
 <!-- LikeBtn.com END -->
+

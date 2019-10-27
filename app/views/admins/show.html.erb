@@ -1,1 +1,39 @@
-<h1>Admin Show</h1>
+ <br>
+
+        <div class="wrapper wrapper--w960">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title" align="center"><strong>Admin Show</strong></h2>
+
+<%= link_to 'Monthly Report', '/admins/monthly_report'  %><br>
+<%= link_to 'Problem and Solution Statistics', '/admins/stat'  %>
+<%= form_with scope: :afilter_tags, url:afilter_tags_path, local: true do |form| %>
+						
+						<div class="container" style="margin: 0;">
+                            <b> Tags </b><br>
+                            <%= check_box 'internship', 'result', {}, 1, 0 %>&nbsp; Internship
+                            <br>
+                             <%= check_box 'payment', 'result', {}, 1, 0 %>&nbsp;Payment
+                             <br>
+                             <%= check_box 'urgency', 'result', {}, 1, 0 %>&nbsp;Urgency
+                            <br>
+                             <%= form.select :urgency, ["cse","mech","civil"], include_blank: "Branch"%>
+                             &nbsp; &nbsp; &nbsp; 
+                            
+                            <%= form.select :difficulty_level, ["easy","medium","hard"], include_blank: "Difficulty"%>
+                            <br>
+                           
+                            
+
+
+
+						<div class="p-t-15">
+                             <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+                        
+                    <%end%>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>

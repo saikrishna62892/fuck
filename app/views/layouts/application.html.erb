@@ -40,8 +40,10 @@
 <div class="topnav sticky-top">
   <div id="main">
         <button class="openbtn" style="float: left"onclick="openNav()">☰ </button> 
+
+
+        <%= link_to image_tag("psp.png"), '/',{:class=>"inactive" ,:style=>"float: left"} %>
         <a class="inactive" style="float: left" href="/">
-<%= image_tag "psp.png" %></a>
 
         <a class="active" href="/">Home</a>
         <a href="/signup">Signup</a>
@@ -51,6 +53,7 @@
         <button type="submit" target="_blank"><i class="fa fa-search"></i></button>
         <% end %>
   </div>-->
+<% if !alogged_in? %>
 <% if !logged_in? %>
         <div class="dropdown1">
             <button onclick="myFunction()" class="dropbtn1">LOGIN</button>
@@ -77,16 +80,17 @@
 
   <div class="dropdown1">
             <%= link_to 'LOGOUT' , logout_path, class: "dropbtn1" %> 
-            
-
-                   
-
-
-
-
   </div>
+
   <% end %>
 </div>
+
+  <% else %>
+    <div class="dropdown1">
+            <%= link_to 'LOGOUT' , alogout_path, class: "dropbtn1" %> 
+  </div>
+<% end %>
+
 
        
   </div>
@@ -138,6 +142,16 @@ function closeNav() {
   <div class="row">
   <div class="columndiv1">
     <br><br><br><br><br><br><br><br>
+
+<p>
+  
+  <button class="btn btn--radius-2 btn--green"><%= link_to "Monthly_Report" , asset_path("Monthly_Report.pdf",skip_pipeline: true)%></button>
+<button class="btn btn--radius-2 btn--blue"><%= link_to "Problem Statistics" , asset_path("Problem_stat.pdf",skip_pipeline: true)%></button>
+
+
+</p>
+
+
     <small>&copy CopyRight 2019 . All rights reserved.</small>
   </div>
   <div class="columndiv2">
@@ -158,6 +172,14 @@ function closeNav() {
   <% end %>
   </div>
 </div>
+
+
+
+
+
+
+
+
 </div>
 </html> 
 

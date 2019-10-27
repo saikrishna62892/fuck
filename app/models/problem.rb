@@ -9,7 +9,6 @@ class Problem < ApplicationRecord
 
 	validates :prob_title, presence: true
 	validates :prob_description, presence: true
-	validates :prob_subject,presence:true
-
+	validates :prob_subject, presence: true
 
 end

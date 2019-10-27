@@ -1,0 +1,22 @@
+
+
+<br>
+
+        <div class="wrapper wrapper--w960">
+            <div class="card card-4">
+                <div class="card-body">
+                	<h2 class="title" align="center"><strong>Monthly Report</strong></h2>
+					<table>
+					  <tr>
+					    <th>Title</th>
+					  </tr>
+					 
+					  <% @m_problems.each  do |pr|%>
+						<tr>
+							<td><%= pr.prob_title%></td>
+					<% end %></tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	<br>

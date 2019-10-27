@@ -1,10 +1,14 @@
- <% render 'flash_messages' %>
+
  <br>
 
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title" align="center"><strong>POST A PROBLEM</strong></h2>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
                     <% if @problem %>
                         <div id="error_explanation">
                         <div class="alert alert-danger">
@@ -35,7 +39,7 @@
                             <b>Upload (img/pdf/docx) </b>&nbsp;<%= form.file_field :attachment %>
                         </div>
                         <div class="container">
-                               <b>Deadline </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.date_field :deadline  %>
+                               <b>Deadline </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.date_field :deadline ,min: -2.days.ago, max: 1.year.from_now  %>
                         </div>
 
                         <div class="container" style="margin: 0;">
