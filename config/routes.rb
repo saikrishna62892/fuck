@@ -10,6 +10,15 @@ post '/suggestion_box' => 'users#suggestion_box'
 get '/users' => 'users#users',as: 'users'
 get '/signup'=>'users#signup' ,as: 'signup'
 
+get '/approve/:sol_id' => 'users#approve' , as: 'approve'
+
+get '/revert/:problem_id/:user_id' => 'users#revert' , as: 'revert'
+
+get '/satisfied/:sol_id/:button_id/' => 'users#satisfied' , as: 'satisfied'
+
+get '/repost/:problem_id' => 'users#repost' , as: 'repost'
+
+
 post '/signningUp' => 'users#signningUp', as: 'signningUp'
 
 post '/admins/index' => 'sessions#acreate', as: 'adminlogin'

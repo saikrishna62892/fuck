@@ -203,6 +203,7 @@ end
 
     
     if( !@solution.present?)
+      
        @sol=@problem.solutions.new(post_solution_params)
        @sol.user_id = @user.id
 
@@ -247,6 +248,43 @@ end
     @sol.update_attributes(:downvote => @sol.downvote+1)
     redirect_to view_problem_path(@sol.problem_id)
   end
+
+
+
+
+def approve
+
+  @solution = Solution.find(params[:sol_id])
+  #render plain:@solution.inspect
+  @solution.update(approve: true)
+  @solution.save
+  redirect_to view_problem_path(@solution.problem_id)
+end
+
+def revert
+
+  @r = RequestAccess.find_by(problem_id: params[:problem_id], user_id: params[:user_id])
+  @r.destroy
+  redirect_to view_problem_path(@r.problem_id),success:"Access Reverted!!"
+end
+def repost
+  @prob = Problem.find(params[:problem_id])
+end
+def satisfied
+  @sol = Solution.find(params[:sol_id])
+  render plain: @sol.inspect
+  if(params[:button_id]==1)
+
+  else
+
+  end
+end
+
+
+
+
+
+
   private
 	def home_search_params
 		params.require(:home_search).permit(:search)
@@ -274,6 +312,6 @@ end
     params.require(:editform).permit(:username,:firstname,:lastname,:dob,:email,:avatar,:qualification,:skills,:about)
   end
   def post_solution_params
-    params.require(:solution).permit(:comment,:progress,:attachment)
+    params.require(:solution).permit(:comment,:progress,:status,:attachment)
   end
 end

@@ -42,7 +42,7 @@
                             <label class="label"><strong>Lastname:</strong> </label>
                                 <%= form.text_field :lastname , class: "form-container" , placeholder: "Lastname",rows: "3",cols:"50"%>
                         </div>  
-                        <div class="container" align="center"><b>&nbsp;&nbsp;&nbsp;&nbsp;Gender:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><%= form.radio_button :gender, 'Male' %> Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.radio_button :gender, 'individual' %> Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div class="container" align="center"><b>&nbsp;&nbsp;&nbsp;&nbsp;Gender:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><%= form.radio_button :gender, 'Male' %> Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.radio_button :gender, 'Female' %> Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                     <div class="container" align="center">
                             <label class="label"><strong>DOB:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
                                 <%= form.date_field :dob ,max: 2.days.ago,class: "input--style-4" , placeholder: "Date"%>
@@ -73,6 +73,7 @@
                           <center><input type="submit" value="Submit"></center>
                         </form>
                         <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    
                             async defer>
                         </script>
                         

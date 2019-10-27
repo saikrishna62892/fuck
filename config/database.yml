@@ -22,7 +22,7 @@ development:
   database: psp_development
   host: localhost
   username: root
-  password: "Sai@62892"
+  password: "12345678"
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
