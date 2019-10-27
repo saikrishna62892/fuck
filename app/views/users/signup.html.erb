@@ -1,9 +1,18 @@
+<script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '6LdJtL8UAAAAAIFLKEdWSDQf_kfuHR52yKL1_jeI'
+        });
+      };
+    </script>
+<%= render 'flash_messages' %>
 <strong><marquee behavior="scroll" direction="left">Welcome to Signup section after successfull signup, please verify your account by clicking on the link provided in your email</marquee></strong>
+
 <br>
  <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <div class="container" align="center">
+                    
                     <h2 class="title" align="center">SignUp!</h2>
 
                     <% if @user %>
@@ -18,10 +27,7 @@
                         </ul>
                       </div>
                     <% end %>
-
-
-
-                        <%= form_with scope: :signup, url:signningUp_path, local: true do |form| %>
+                        <%= form_with  scope: :signup, url:signningUp_path, local: true do |form| %>
                         
                         <div class="container" align="center">
                             <label class="label"><strong>Username: </strong></label>
@@ -36,10 +42,15 @@
                             <label class="label"><strong>Lastname:</strong> </label>
                                 <%= form.text_field :lastname , class: "form-container" , placeholder: "Lastname",rows: "3",cols:"50"%>
                         </div>  
-                        <div class="container" align="center"><b>&nbsp;&nbsp;&nbsp;&nbsp;Gender:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><%= form.radio_button :gender, 'Male' %> Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.radio_button :gender, 'individual' %> Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div class="container" align="center"><b>&nbsp;&nbsp;&nbsp;&nbsp;Gender:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><%= form.radio_button :gender, 'Male' %> Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.radio_button :gender, 'Female' %> Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                     <div class="container" align="center">
                             <label class="label"><strong>DOB:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
                                 <%= form.date_field :dob ,max: 2.days.ago,class: "input--style-4" , placeholder: "Date"%>
+                        </div>
+
+                        <div class="container" align="center">
+                            <label class="label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upload image:</label>
+                                <%= form.file_field :avatar ,class: "input--style-4" %>
                         </div>
 
 
@@ -56,9 +67,15 @@
                             <label class="label"><strong>Confirm Password: </strong></label>
                                 <%= form.password_field :password_confirmation , class: "form-container" , placeholder: "Confirm Password.."%>
                         </div>  
-                        <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                        </div>
+                         <form action="?" method="POST">
+                          <div class="g-recaptcha container" data-sitekey="6LdJtL8UAAAAAIFLKEdWSDQf_kfuHR52yKL1_jeI" align="center"></div>
+                          <br/>
+                          <center><input type="submit" value="Submit"></center>
+                        </form>
+                        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    
+                            async defer>
+                        </script>
                         
                     <%end%>
                 </div>

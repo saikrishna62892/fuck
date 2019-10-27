@@ -9,7 +9,11 @@ class Problem < ApplicationRecord
 
 	validates :prob_title, presence: true
 	validates :prob_description, presence: true
+<<<<<<< HEAD
 	validates :prob_subject, presence: true
+=======
+	validates :prob_subject,presence:true
+>>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
 
 
 end

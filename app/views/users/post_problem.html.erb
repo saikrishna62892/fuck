@@ -5,7 +5,10 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title" align="center"><strong>POST A PROBLEM</strong></h2>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
                     <% if @problem %>
                         <div id="error_explanation">
                         <div class="alert alert-danger">
@@ -19,6 +22,7 @@
                       </div>
                     <% end %>
                         <%= form_with scope: :problem, url:getProblemDetails_path, local: true do |form| %>
+
                         <div class="container">
                             <label class="label"><b>Title</b></label><br>
                                 <%= form.text_field :prob_title, placeholder: "Title..."%>

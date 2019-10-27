@@ -11,5 +11,5 @@ class User < ApplicationRecord
 	validates :email, presence: true
 	validates :gender, presence: true
 	validates :firstname, presence: true
-
+	validates :avatar, :presence => true
 end

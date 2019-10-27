@@ -10,17 +10,25 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8mb4
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+<<<<<<< HEAD
   username: root
   password: "ultaplatde"
   socket: /var/run/mysqld/mysqld.sock
+=======
+>>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
   
 
 development:
-  <<: *default
+  adapter: mysql2
+  encoding: utf8
+  timeout: 5000
   database: psp_development
+  host: localhost
+  username: root
+  password: "12345678"
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -53,4 +61,3 @@ production:
   database: psp_production
   username: psp
   password: <%= ENV['PSP_DATABASE_PASSWORD'] %>
-   url: <%= ENV['DATABASE_URL'] %>

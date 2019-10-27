@@ -1,8 +1,15 @@
 class UsersController < ApplicationController
 	add_flash_types :danger,:info, :success,:warning
   @global_problem = nil
+
+skip_before_action :require_login, only: [:index, :signup, :signningUp, :verifier]
+
   def index
+<<<<<<< HEAD
   	# flash[:info] = "Welcome to PSP site!!"
+=======
+  	#flash[:info] = "Welcome to PSP site!!"
+>>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
   end
   def users
     @users=User.all
@@ -43,11 +50,10 @@ class UsersController < ApplicationController
   def signningUp
     @user = User.new(signup_params)
     @user.otp = rand 100000..999999
-    if @user.save  
+    if verify_recaptcha(model: @user) && @user.save  
     UserMailer.email_verifier(@user).deliver_now
     flash[:success]="Signup successful"
     redirect_to root_url    
-
     else
 
       flash[:danger]="Signup failed"
@@ -61,20 +67,28 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:user_id])
     if @user.otp == params[:otp]
-      @user.verified = true;
-      redirect_to user_edit_profile_url(@user)
+      @user.verified = true
+      @user.save
+      
+      #  @user.save
+      redirect_to wall_url, success: "You have been Verified!"
+
     end
 
   end
 
   def profile
 
-  @user =User.find_by(id: params[:user_id])
+  @user = current_user
   end
 
 def edit
-
-@user =User.find_by(id: params[:user_id])
+if params[:user_id] == current_user.id.to_s
+@user =  current_user
+else
+  
+  redirect_to user_edit_profile_path(current_user), danger: "You are not authorized to Access other user's page"
+end
 
 end
 
@@ -118,7 +132,10 @@ end
       @tag.save
       redirect_to wall_path,success: "Problem Created Succesfully!!"
     else
+<<<<<<< HEAD
       # flash[:danger]="Something went wrong!!"
+=======
+>>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
       render 'post_problem'
     end
     #@pdf =@problem.attachment.attachment
@@ -141,6 +158,7 @@ end
       if value!="0" && value!=""
         tags1 = tags1.public_send(key, value)
       end
+
     end
     problemids=tags1.select(:problem_id)
     problems=Problem.where(:id => problemids)
@@ -149,6 +167,7 @@ end
   def view_problem
     @prob_id = params[:id]
     @view = Problem.find(@prob_id)
+    @view.update_attributes(:views => (@view.views+1))
 
 
   end
@@ -192,6 +211,7 @@ end
 
     
     if( !@solution.present?)
+      
        @sol=@problem.solutions.new(post_solution_params)
        @sol.user_id = @user.id
 
@@ -224,6 +244,53 @@ end
         end
       end
   end
+  def upvote
+    sol_id = params[:id]
+    @sol = Solution.find(sol_id)
+    @sol.update_attributes(:upvote => @sol.upvote+1)
+    redirect_to view_problem_path(@sol.problem_id)
+  end
+  def downvote
+    sol_id = params[:id]
+    @sol = Solution.find(sol_id)
+    @sol.update_attributes(:downvote => @sol.downvote+1)
+    redirect_to view_problem_path(@sol.problem_id)
+  end
+
+
+
+
+def approve
+
+  @solution = Solution.find(params[:sol_id])
+  #render plain:@solution.inspect
+  @solution.update(approve: true)
+  @solution.save
+  redirect_to view_problem_path(@solution.problem_id)
+end
+
+def revert
+
+  @r = RequestAccess.find_by(problem_id: params[:problem_id], user_id: params[:user_id])
+  @r.destroy
+  redirect_to view_problem_path(@r.problem_id),success:"Access Reverted!!"
+end
+def repost
+  @prob = Problem.find(params[:problem_id])
+end
+def satisfied
+  @sol = Solution.find(params[:sol_id])
+  render plain: @sol.inspect
+  if(params[:button_id]==1)
+
+  else
+
+  end
+end
+
+
+
+
 
 
   private
@@ -247,12 +314,12 @@ end
   end
 
   def signup_params
-    params.require(:signup).permit(:username,:firstname,:lastname,:dob,:email,:password,:password_confirmation,:gender)
+    params.require(:signup).permit(:username,:firstname,:lastname,:dob,:avatar,:email,:password,:password_confirmation,:gender)
   end
   def editform_params
     params.require(:editform).permit(:username,:firstname,:lastname,:dob,:email,:avatar,:qualification,:skills,:about)
   end
   def post_solution_params
-    params.require(:solution).permit(:comment,:progress,:attachment)
+    params.require(:solution).permit(:comment,:progress,:status,:attachment)
   end
 end

@@ -10,6 +10,15 @@ post '/suggestion_box' => 'users#suggestion_box'
 get '/users' => 'users#users',as: 'users'
 get '/signup'=>'users#signup' ,as: 'signup'
 
+get '/approve/:sol_id' => 'users#approve' , as: 'approve'
+
+get '/revert/:problem_id/:user_id' => 'users#revert' , as: 'revert'
+
+get '/satisfied/:sol_id/:button_id/' => 'users#satisfied' , as: 'satisfied'
+
+get '/repost/:problem_id' => 'users#repost' , as: 'repost'
+
+
 post '/signningUp' => 'users#signningUp', as: 'signningUp'
 
 post '/admins/index' => 'sessions#acreate', as: 'adminlogin'
@@ -23,9 +32,9 @@ get '/edit/:user_id' => 'users#edit', as: 'user_edit_profile'
 
 patch '/edit/:user_id' => 'users#save', as: 'user_save_profile'
 
-get '/profile/:user_id' => 'users#profile', as: 'user_profile'
+get '/profile' => 'users#profile', as: 'user_profile'
 
-get '/MyPostedProblems/:user_id' => 'users#myPostedProblems' , as: 'user_posted_problems'
+get '/MyPostedProblems' => 'users#myPostedProblems' , as: 'user_posted_problems'
 
 get '/MyPostedSolutions' => 'users#myPostedSolutions' , as: 'user_posted_solutions'
 
@@ -60,5 +69,8 @@ post '/afilter_tags' => 'admins#afilter_tags',as: 'afilter_tags'
 get '/viewproblem/:id' => 'users#view_problem',as:'view_problem'
 post '/postsolution/:prob_id' => 'users#post_solution',as:'post_solution'
 get '/request_access/:prob_id' => 'users#request_access',as:'request_access'
+post '/upvote/:id' => 'users#upvote', as: 'upvote'
+post '/downvote/:id' => 'users#downvote', as: 'downvote'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
