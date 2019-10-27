@@ -29,7 +29,7 @@
 
 <% prob = Problem.find(request.problem_id) %>
     <tr>
-      <th scope="row"><%= sno %></th>
+      <th scope="row" align="center"><%= sno %></th>
       <td align="center"><%= link_to prob.prob_title, view_problem_path(prob) %></td>
 
       <td align="center"> 
@@ -43,7 +43,14 @@
       	<%= link_to(User.find(request.user_id).username, user_profile_path(request.user_id)) %>
 
       </td>
-      
+    <td align="center">
+      <% @solly = Solution.find_by(:user_id=> request.user_id) %>
+      <% if @solly.present? %>
+      <%= @solly.satisfaction %>
+      <% else %>
+      Not Assigned
+      <% end %>
+    </td>
     </tr>
     <% sno=sno+1 %>
     <%end%>

@@ -5,11 +5,6 @@ class UsersController < ApplicationController
 skip_before_action :require_login, only: [:index, :signup, :signningUp, :verifier]
 
   def index
-<<<<<<< HEAD
-  	# flash[:info] = "Welcome to PSP site!!"
-=======
-  	#flash[:info] = "Welcome to PSP site!!"
->>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
   end
   def users
     @users=User.all
@@ -132,10 +127,6 @@ end
       @tag.save
       redirect_to wall_path,success: "Problem Created Succesfully!!"
     else
-<<<<<<< HEAD
-      # flash[:danger]="Something went wrong!!"
-=======
->>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
       render 'post_problem'
     end
     #@pdf =@problem.attachment.attachment
@@ -280,12 +271,15 @@ def repost
 end
 def satisfied
   @sol = Solution.find(params[:sol_id])
-  render plain: @sol.inspect
-  if(params[:button_id]==1)
-
-  else
-
+  button = params[:button_id]
+  if(button=='1')
+    @sol.update(:satisfaction => "Satisfied")
   end
+  if(button=='2')
+    @sol.update(:satisfaction => "Dis-satisfied")
+  end
+  @sol.save
+  redirect_to view_problem_path(@sol.problem_id)
 end
 
 
