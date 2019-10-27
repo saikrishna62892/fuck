@@ -13,12 +13,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-<<<<<<< HEAD
-  username: root
-  password: "ultaplatde"
-  socket: /var/run/mysqld/mysqld.sock
-=======
->>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
+
   
 
 development:
@@ -28,7 +23,7 @@ development:
   database: psp_development
   host: localhost
   username: root
-  password: "12345678"
+  password: "ultaplatde"
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

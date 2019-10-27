@@ -5,11 +5,7 @@ class UsersController < ApplicationController
 skip_before_action :require_login, only: [:index, :signup, :signningUp, :verifier]
 
   def index
-<<<<<<< HEAD
-  	# flash[:info] = "Welcome to PSP site!!"
-=======
-  	#flash[:info] = "Welcome to PSP site!!"
->>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
+
   end
   def users
     @users=User.all
@@ -132,10 +128,6 @@ end
       @tag.save
       redirect_to wall_path,success: "Problem Created Succesfully!!"
     else
-<<<<<<< HEAD
-      # flash[:danger]="Something went wrong!!"
-=======
->>>>>>> 3655feb514f7e3a1f7181e7cbd25c8908fbbafc4
       render 'post_problem'
     end
     #@pdf =@problem.attachment.attachment
