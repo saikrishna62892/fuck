@@ -168,7 +168,7 @@ end
   def myPostedProblems
     @user = current_user
     @posted_problems = @user.problems
-
+    
 
 
   end

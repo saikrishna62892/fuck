@@ -4,7 +4,7 @@
  <div class="wrapper wrapper--w960">
             <div class="card card-4">
                 <div class="card-body">
-<% temp = @posted_problems.order("created_at DESC") %>
+<% temp = @user.problems.order("created_at DESC") %>
 <!-- Problems ddetails -->
 <% temp.each do |prob| %>
 <div class="list-group">
