@@ -32,7 +32,7 @@ get '/edit/:user_id' => 'users#edit', as: 'user_edit_profile'
 
 patch '/edit/:user_id' => 'users#save', as: 'user_save_profile'
 
-get '/profile' => 'users#profile', as: 'user_profile'
+get '/profile/:user_id' => 'users#profile', as: 'user_profile'
 
 get '/MyPostedProblems' => 'users#myPostedProblems' , as: 'user_posted_problems'
 

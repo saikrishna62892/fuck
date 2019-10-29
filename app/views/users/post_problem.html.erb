@@ -47,15 +47,22 @@
                              <%= check_box 'urgency', 'result', {}, 1, 0 %>&nbsp;Urgency&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <%= check_box 'miscellaneous', 'result', {}, 1, 0 %>&nbsp;Miscellaneous
                             
-                            <%= form.select :branch, ["cse","mech","civil"], include_blank: "Branch"%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <%= form.select :difficulty_level, ["easy","medium","hard"], include_blank: "Difficulty"%>
+                            <%= form.select :branch, ["CSE","MECH","CIVIL","ECE","EEE","CHEM", "Not Specific"], include_blank: "Branch"%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <%= form.select :difficulty_level, ["Easy","Medium","Hard","Not Specific"], include_blank: "Difficulty"%>
                             
                             <div class="container"><b>Task allocation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><%= form.radio_button :dot, 'group' %> Group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.radio_button :dot, 'individual' %> Individual</div>
                             </p>
-                           
-                        <div  align="center">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                        </div>
+
+                             <form action="?" method="POST">
+                          <div class="g-recaptcha container" data-sitekey="6LdJtL8UAAAAAIFLKEdWSDQf_kfuHR52yKL1_jeI" align="center"></div>
+                          <br/>
+                          <center><input type="submit" value="Submit"></center>
+                        </form>
+                        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    
+                            async defer>
+                        </script>
+                            
                         
                     <%end%>
                 </div>

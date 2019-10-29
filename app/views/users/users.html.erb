@@ -1,18 +1,9 @@
-<style>
-	input[type=text], textarea{
-  width: 36%;
-  padding: 5px;
-  border: 2px solid #ccc;
-  border-radius: 2px;
-  box-sizing: border-box;
-  resize: vertical;
-  
-</style>
+
 <br>
 <center>
 	<div class="search-container">
         <%= form_with scope: :user_search, local: true, url:'/user_search' do |form| %>
-        <%= form.text_field :search, placeholder: "Search Username.." %>
+        <%= form.text_field :search, placeholder: "Search Username.." , style: 'width:36%'%>
         <button type="submit" style="padding: 4px;">Search!</button>
         <% end %>
   </div>
@@ -24,7 +15,7 @@
           <center>
             <div class="containercard">
   	         <%= image_tag(user.avatar,:size => "200x200")%>
-                <h4><b><%= user.username %></b></h4> 
+                <h4><b><%= link_to user.username, user_profile_path(user)  %></b></h4> 
                 <p><%= user.email %></p> 
                   </div>
           </center>

@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  add_flash_types :danger,:info, :success,:warning
+
+
 
 skip_before_action :require_login, only: [:create, :acreate]
 

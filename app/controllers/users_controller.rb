@@ -76,7 +76,7 @@ skip_before_action :require_login, only: [:index, :signup, :signningUp, :verifie
 
   def profile
 
-  @user = current_user
+  @user = User.find(params[:user_id])
   end
 
 def edit
@@ -113,18 +113,16 @@ end
 
 
   def post_problem
-  end
-  def show_attachments
-    @attachments = Problem.find(49).attachment
 
 
   end
+  
   def getProblemDetails
     #render plain:params[:payment][:result].inspect
     #@problem=Problem.create(problem_params2)
     @user = current_user
     @problem = @user.problems.new(problem_params2)
-    if @problem.save
+    if verify_recaptcha(model: @problem) && @problem.save
       @tag=@problem.tags.new(:deadline=> problem_params1[:deadline],:payment=> params[:payment][:result],:internship=> params[:internship][:result],:urgency=> params[:urgency][:result],:miscellaneous=> params[:miscellaneous][:result],:dot=> problem_params1[:dot],:type=> problem_params1[:type],:difficulty=> problem_params1[:difficulty_level],:branch=> problem_params1[:branch])
       @tag.save
       redirect_to wall_path,success: "Problem Created Succesfully!!"

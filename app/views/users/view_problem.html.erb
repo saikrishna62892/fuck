@@ -1,12 +1,4 @@
-
-<!--<%= @view %>
-<%= link_to 'XXX',@view.attachment.attachment,:disposition => 'inline' %>
-<iframe src=<%= @view.attachment.attachment %> width="600" height="780" style="border: none;"> </iframe>
-<a href="https://docs.google.com/gview?url=<%=  u @view.attachment.attachment %>&embedded=true">Your Pdf Viewer</a>
-<%= @view.tags %>
-<a href="https://docs.google.com/gview?url={#{@view.attachment.attachment}}&embedded=true">Youer</a>-->
-
-<body style="background-color: #f7f6f9;">
+<div style="background-color: #f7f6f9;width: 100%; padding: 0px;">
 <br>
         <div class="wrapper wrapper--w780">
             <div class="card card-4">
@@ -46,7 +38,7 @@
                         </div>
 
 
-                         <div class="columndiv3"><p><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(@view.user_id).username, user_profile_path(@view.user_id) %></p>
+                         <div class="columndiv3"><p><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(sol.user_id).username, user_profile_path(sol.user_id) %></p>
                             <button class="btn btn--radius-2 btn--green"><%= link_to "View Solution(PDF)", sol.attachment.attachment, :target => "_blank",    
                          :disposition => 'inline' %></button></div>
                         <div class="columndiv6"><%= form_with scope: :upvote, url:upvote_path(sol), local: true do |form| %>
@@ -88,7 +80,7 @@
                         </div>
 
 
-                         <div class="columndiv3"><p><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(@view.user_id).username, user_profile_path(@view.user_id) %></p>
+                         <div class="columndiv3"><p><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(sol.user_id).username, user_profile_path(sol.user_id) %></p>
                             <button class="btn btn--radius-2 btn--green"><%= link_to "View Solution(PDF)", sol.attachment.attachment, :target => "_blank",    
                          :disposition => 'inline' %></button></div>
                         <div class="columndiv6"><%= form_with scope: :upvote, url:upvote_path(sol), local: true do |form| %>
@@ -119,7 +111,6 @@
                         </div>
 
                                 <% else %>
-                                <h3> Else part</h3>
                                                                 <div class="columndiv3"><strong>Progress : </strong><%= sol.progress %><br>
                          <strong>Comment(s) : </strong><%= sol.comment %>&nbsp;&nbsp;&nbsp;<br>
                          <strong>Status: </strong> 
@@ -132,7 +123,7 @@
                         </div>
 
 
-                         <div class="columndiv3"><p><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(@view.user_id).username, user_profile_path(@view.user_id) %></p>
+                         <div class="columndiv3"><p><strong> Posted by:&nbsp;&nbsp;</strong><%= link_to User.find(sol.user_id).username, user_profile_path(sol.user_id) %></p>
                             <button class="btn btn--radius-2 btn--green"><%= link_to "View Solution(PDF)", sol.attachment.attachment, :target => "_blank",    
                          :disposition => 'inline' %></button></div>
                         <div class="columndiv6"><%= form_with scope: :upvote, url:upvote_path(sol), local: true do |form| %>
@@ -186,3 +177,4 @@
          <% end %>
          <% end %>
 <br>
+</div>

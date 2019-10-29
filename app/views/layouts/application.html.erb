@@ -25,26 +25,24 @@
   <%= link_to('Wall',wall_path) %>
   <%= link_to('Post a Problem',post_problem_path) %>
   <%= link_to('Users',users_path) %>
-  
-  <%= link_to('View Profile', user_profile_path) %>
+  <% if current_user != nil %>
+  <%= link_to('View Profile', user_profile_path(current_user)) %>
   <%= link_to('My Posted Problems', user_posted_problems_path) %>
  <%= link_to('My Posted Solutions', user_posted_solutions_path) %>
   <%= link_to('My Sent Requests', user_sent_requests_path) %>
-
+<% end %>
  
   
   
 
   <br><br><br><br><br><%=link_to('Admin' ,admin_path) %>
 </div>
+
 <div class="topnav sticky-top">
+
   <div id="main">
         <button class="openbtn" style="float: left"onclick="openNav()">☰ </button> 
-
-
-        <%= link_to image_tag("psp.png"), '/',{:class=>"inactive" ,:style=>"float: left"} %>
-        <a class="inactive" style="float: left" href="/">
-
+        <a href="/index" style="float:left;font-size: 25px; padding-top: 3px; padding-bottom:3px  ; " class = "logoxxx  "><strong>WoC</strong></a>
         <a class="active" href="/">Home</a>
         <a href="/signup">Signup</a>
         <!--<div class="search-container">
@@ -68,7 +66,9 @@
                       <%= f.label :password %>
                       <%= f.password_field :password, class: 'form-control', placeholder: "password"  %>
 
-                      <%= f.submit "Log in", class: "btn btn-primary" %>
+
+
+                      <center><%= f.submit "Log in", class: "btn btn-primary" %></center>
                     <% end %>
         </div>
 
@@ -141,44 +141,46 @@ function closeNav() {
 <div class="footer">
   <div class="row">
   <div class="columndiv1">
-    <br><br><br><br><br><br><br><br>
+    <br><br><br>
 
-<p>
+
   
   <button class="btn btn--radius-2 btn--green"><%= link_to "Monthly_Report" , asset_path("Monthly_Report.pdf",skip_pipeline: true)%></button>
+  <br><br>
 <button class="btn btn--radius-2 btn--blue"><%= link_to "Problem Statistics" , asset_path("Problem_stat.pdf",skip_pipeline: true)%></button>
 
+<br><br><br>
 
-</p>
-
-
-    <small>&copy CopyRight 2019 . All rights reserved.</small>
+<small>&copy CopyRight 2019 . All rights reserved.</small>  
   </div>
-  <div class="columndiv2">
+  <div class="columndiv2" style = "width:40%;">
   <strong>Quicklinks</strong><br><br>
   <a href="/index"><p style="color:white;margin-bottom:0px;"><b>About WorkCollab</b></p></a>
   <a href="/wall"><p style="color:white;margin-bottom: 0px;">Wall</p></a>
   <a href="/post_problem"><p style="color:white;margin-bottom: 0px;">Post a Problem</p></a>
   <a href="/users"><p style="color:white;margin-bottom: 0px;">Users</p></a>
   </div>
-  <div class="columndiv3">
+  <div class="columndiv1" >
     <p align="center"> <b>Suggestion Box</b></p>
     <%= form_with scope: :suggestion_box, local: true, url:'/suggestion_box' do |form| %>
-    <p>Username &nbsp;&nbsp;<%= form.text_field :user_name, placeholder: "Your Username.." %></p>
-    <p>Subject &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.text_area :subject, placeholder: "Write something..", class: "input--style-4",rows: "2",cols:"30" %></p>
-    <div align="center"><%= form.submit 'Submit'%></div>
-  <% end %>
+    Username &nbsp;&nbsp;<%= form.text_field :user_name, placeholder: "Your Username.." ,class: "input--style-4" %>
+    Subject &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= form.text_area :subject, placeholder: "Write something..", class: "input--style-4",rows: "1",cols:"25" %>
+    <div align="center" style = "padding-top: 8px"><%= form.submit 'Submit'%></div>
+  <% end %>       
   </div>
 </div>
 
 
 
 
-
+    
 
 
 
 </div>
+
+
+
 </html> 
 
 

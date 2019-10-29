@@ -19,18 +19,24 @@ html {
 }
 
 
+.logoxxx {
+float: left;
+font-family: "Poppins", Arial, sans-serif;
 
+font-weight: bold;  
+}
 
 body {
-    height: 100%;
-
-
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
   font-family: "Poppins", Arial, sans-serif;
   font-weight: 300;
   font-size: 16px;
   line-height: 2;
   color: gray;
-  background: #f7f6f9 }
+  background-color: #f7f6f9;
+}
 
   
 
@@ -117,7 +123,7 @@ body {
     text-decoration: none; }
 
 #page {
-  position: relative;
+  position: absolute;
   overflow-x: hidden;
   width: 100%;
   height: 100%;
@@ -540,6 +546,9 @@ input[type=text], textarea{
   box-sizing: border-box;
   resize: vertical;
 }
+
+
+
 select{
   width: 30%;
   padding: 0px;
