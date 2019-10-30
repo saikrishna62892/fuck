@@ -16,7 +16,6 @@ get '/revert/:problem_id/:user_id' => 'users#revert' , as: 'revert'
 
 get '/satisfied/:sol_id/:button_id/' => 'users#satisfied' , as: 'satisfied'
 
-get '/repost/:problem_id' => 'users#repost' , as: 'repost'
 
 
 post '/signningUp' => 'users#signningUp', as: 'signningUp'
@@ -71,6 +70,6 @@ post '/postsolution/:prob_id' => 'users#post_solution',as:'post_solution'
 get '/request_access/:prob_id' => 'users#request_access',as:'request_access'
 post '/upvote/:id' => 'users#upvote', as: 'upvote'
 post '/downvote/:id' => 'users#downvote', as: 'downvote'
-
+get '/repost/:prob_id' => 'users#repost',as: 'repost'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

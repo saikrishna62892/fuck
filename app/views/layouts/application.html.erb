@@ -22,20 +22,30 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   
   
+  
+  <% if current_user != nil %>
   <%= link_to('Wall',wall_path) %>
   <%= link_to('Post a Problem',post_problem_path) %>
   <%= link_to('Users',users_path) %>
-  <% if current_user != nil %>
   <%= link_to('View Profile', user_profile_path(current_user)) %>
   <%= link_to('My Posted Problems', user_posted_problems_path) %>
  <%= link_to('My Posted Solutions', user_posted_solutions_path) %>
   <%= link_to('My Sent Requests', user_sent_requests_path) %>
+  <br><br><br><br>
+  <%=link_to('Admin' ,admin_path) %>
+  <% else %>
+
+  
+  <%= link_to('Home',index_path) %>
+  <%= link_to('Signup',signup_path) %>
+  <br><br><br><br><br><br><br><br><br><br><br>
+  <%=link_to('Admin' ,admin_path) %>
 <% end %>
  
   
   
 
-  <br><br><br><br><br><%=link_to('Admin' ,admin_path) %>
+  
 </div>
 
 <div class="topnav sticky-top">

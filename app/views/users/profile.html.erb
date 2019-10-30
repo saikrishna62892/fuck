@@ -5,7 +5,12 @@
             <div class="card card-4" >
                 <div class="card-body">
                     <h2 class="title" align="center">PROFILE</h2>
-                    <div class="container1" align="right"><%= link_to('Edit Profile', user_edit_profile_path(current_user)) %><br></div>
+                    <div class="container1" align="right">
+                        <% if current_user.id == @user.id %>
+                        <%= link_to('Edit Profile', user_edit_profile_path(current_user)) %>
+                        <% end %>
+                        <br>
+                    </div>
                     <div class="columndiv5">
                         <div class="container1">
                            <p> <label class="label">Username : </label><%= @user.username%></p>    	

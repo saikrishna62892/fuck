@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_27_173642) do
+ActiveRecord::Schema.define(version: 2019_10_30_041147) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -73,12 +73,12 @@ ActiveRecord::Schema.define(version: 2019_10_27_173642) do
     t.bigint "problem_id"
     t.bigint "user_id"
     t.string "progress"
-    t.integer "votes", default: 0
     t.integer "upvote", default: 0
     t.integer "downvote", default: 0
     t.string "status", default: "pending"
     t.boolean "approve", default: false
     t.string "satisfaction", default: "Not Reviewed"
+    t.boolean "liked", default: false
     t.index ["problem_id"], name: "index_solutions_on_problem_id"
     t.index ["user_id"], name: "index_solutions_on_user_id"
   end

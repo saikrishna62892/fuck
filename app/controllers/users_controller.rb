@@ -68,7 +68,7 @@ skip_before_action :require_login, only: [:index, :signup, :signningUp, :verifie
       @user.save
       
       #  @user.save
-      redirect_to wall_url, success: "You have been Verified!"
+      redirect_to index_url, success: "You have been Verified!"
 
     end
 
@@ -238,16 +238,24 @@ end
   def upvote
     sol_id = params[:id]
     @sol = Solution.find(sol_id)
-    @sol.update_attributes(:upvote => @sol.upvote+1)
+    if !@sol.liked
+      @sol.update_attributes(:liked => true,:upvote => @sol.upvote+1)
+    end
     redirect_to view_problem_path(@sol.problem_id)
   end
   def downvote
     sol_id = params[:id]
     @sol = Solution.find(sol_id)
-    @sol.update_attributes(:downvote => @sol.downvote+1)
+    if !@sol.liked
+      @sol.update_attributes(:liked => true,:downvote => @sol.downvote+1)
+    end
     redirect_to view_problem_path(@sol.problem_id)
   end
-
+def repost
+  @problem = Problem.find(params[:prob_id])
+  @problem.update_attributes(:updated_at => Time.now)
+  redirect_to wall_path,success:"Problem Reposted!!"
+end
 
 
 
@@ -265,9 +273,6 @@ def revert
   @r = RequestAccess.find_by(problem_id: params[:problem_id], user_id: params[:user_id])
   @r.destroy
   redirect_to view_problem_path(@r.problem_id),success:"Access Reverted!!"
-end
-def repost
-  @prob = Problem.find(params[:problem_id])
 end
 def satisfied
   @sol = Solution.find(params[:sol_id])

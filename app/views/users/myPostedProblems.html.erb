@@ -4,7 +4,7 @@
  <div class="wrapper wrapper--w960">
             <div class="card card-4">
                 <div class="card-body">
-<% temp = @user.problems.order("created_at DESC") %>
+<% temp = @user.problems.order("updated_at DESC") %>
 <!-- Problems ddetails -->
 <% temp.each do |prob| %>
 <div class="list-group">
@@ -12,14 +12,13 @@
   <!--<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">-->
     <div class="d-flex w-100 justify-content-between">
       <h4 class="mb-1"><%= prob.prob_title %></h4>
-      <small class="text-muted"><%= distance_of_time_in_words(prob.created_at, Time.now) %></small>
+      <small class="text-muted"><%= distance_of_time_in_words(prob.updated_at, Time.now) %></small>
     </div>
     <p class="mb-1"><%= prob.prob_subject %></p>
     <% @tag=Tag.find_by(problem_id: prob.id)%>
     <% if @tag!= nil %>
     <small class="text-muted">Payment :&nbsp;<%= @tag.payment%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Internship :&nbsp;<%= @tag.internship%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Urgency :&nbsp;<%= @tag.urgency%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Miscellaneous :&nbsp;<%= @tag.miscellaneous%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Branch :&nbsp;<%= @tag.branch%>&nbsp;&nbsp;&nbsp;&nbsp;Difficulty :&nbsp;<%= @tag.difficulty%>&nbsp;&nbsp;</small>
-    <h5 align="right"><small><%= link_to('View Problem',view_problem_path(prob)) %></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <small><%= link_to('View Requests',view_requests_path(prob),data: { confirm: 'Press Yes to Confirm?' }) %></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+    <h5 align="right"><small><%= link_to('Repost',repost_path(prob),style:'float:left;padding-top:5px')%></small><small><%= link_to('View Problem',view_problem_path(prob)) %></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><%= link_to('View Requests',view_requests_path(prob)) %></small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
 
   </a>
   <% end %>

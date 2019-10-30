@@ -17,13 +17,15 @@
       <th class="text-center">#</th>
       <th class="text-center" >Problem Title</th>
       <th class="text-center">Access</th>
+      <th class="text-center">Time</th>
       
     </tr>
     </thead>
 
   <tbody>
     <% sno=1%>
-    <% @sent_requests.each do |req|%>
+    <% temp = @sent_requests.order("updated_at DESC") %>
+    <% temp.each do |req|%>
     <% prob = Problem.find(req.problem_id) %>
     <tr>
       <td scope="row" align="center"><%= sno %></td >
@@ -35,7 +37,7 @@
         NOT GRANTED YET
         <% end %>
       </td>
-      
+      <td align="center"><%= req.created_at %></td>
     </tr>
     <% sno=sno+1 %>
     <%end%>

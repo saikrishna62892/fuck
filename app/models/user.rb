@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
 	validates :username, presence: true,length: { maximum: 30 }
 	validates :dob, presence: true
-	validates :email, presence: true
+	validates :email, presence: true,uniqueness: true
 	validates :gender, presence: true
 	validates :firstname, presence: true
 	validates :avatar, :presence => true

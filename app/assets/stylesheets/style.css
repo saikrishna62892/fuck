@@ -27,15 +27,14 @@ font-weight: bold;
 }
 
 body {
-  width: 100%;
-  height: 100vh;
   overflow-x: hidden;
+  height: 100%;
   font-family: "Poppins", Arial, sans-serif;
   font-weight: 300;
   font-size: 16px;
   line-height: 2;
   color: gray;
-  background-color: #f7f6f9;
+  background-color: #f7f6f9; 
 }
 
   
@@ -444,6 +443,9 @@ input[type=submit]:hover {
 
 .wrapper--w680 {
   max-width: 680px;
+}
+.wrapper--w420 {
+  max-width: 560px;
 }
 /* ==========================================================================
    #CARD

@@ -15,8 +15,8 @@
   <%= check_box 'internship', 'result', {}, 1, 0 %>&nbsp;<strong>Internship</strong>
   <%= check_box 'urgency', 'result', {}, 1, 0 %>&nbsp;<strong>Urgency</strong>
   <%= check_box 'miscellaneous', 'result', {}, 1, 0 %>&nbsp;<strong>Miscellaneous</strong>
-  &nbsp;<%= form.select :branch, ["cse","mech","civil"],{include_blank: "Branch"},{ class: 'sample'}%>
-  &nbsp;<%= form.select :difficulty, ["easy","medium","hard"],{include_blank: "Difficulty"},{class: 'sample' }%>
+  &nbsp;<%= form.select :branch, ["CSE","MECH","CIVIL","EEE","ECE","CHEM","Not Specific"],{include_blank: "Branch"},{ class: 'sample'}%>
+  &nbsp;<%= form.select :difficulty, ["Easy","Medium","Hard","Not Specific"],{include_blank: "Difficulty"},{class: 'sample' }%>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <%= form.submit 'Search'%>
   <hr align="center" width="100%">
@@ -25,7 +25,7 @@
  <div class="wrapper wrapper--w960">
             <div class="card card-4">
                 <div class="card-body">
-<% temp = @problems.order("created_at DESC") %>
+<% temp = @problems.order("updated_at DESC") %>
 <!-- Problems ddetails -->
 <% temp.each do |prob| %>
 <div class="list-group">
@@ -33,7 +33,7 @@
   <!--<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">-->
     <div class="d-flex w-100 justify-content-between">
       <h4 class="mb-1"><%= prob.prob_title %></h4>
-      <small class="text-muted"><%= distance_of_time_in_words(prob.created_at, Time.now) %></small>
+      <small class="text-muted"><%= distance_of_time_in_words(prob.updated_at, Time.now) %></small>
     </div>
     <p class="mb-1"><%= prob.prob_subject %></p>
     <% @tag=Tag.find_by(problem_id: prob.id)%>
