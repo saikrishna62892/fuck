@@ -31,8 +31,7 @@
   <%= link_to('My Posted Problems', user_posted_problems_path) %>
  <%= link_to('My Posted Solutions', user_posted_solutions_path) %>
   <%= link_to('My Sent Requests', user_sent_requests_path) %>
-  <br><br><br><br>
-  <%=link_to('Admin' ,admin_path) %>
+  
   <% else %>
 
   
@@ -40,6 +39,9 @@
   <%= link_to('Signup',signup_path) %>
   <br><br><br><br><br><br><br><br><br><br><br>
   <%=link_to('Admin' ,admin_path) %>
+  <% if acurrent_admin %>
+  <%= link_to 'Logout' , alogout_path %> 
+  <% end %>
 <% end %>
  
   
@@ -61,7 +63,6 @@
         <button type="submit" target="_blank"><i class="fa fa-search"></i></button>
         <% end %>
   </div>-->
-<% if !alogged_in? %>
 <% if !logged_in? %>
         <div class="dropdown1">
             <button onclick="myFunction()" class="dropbtn1">LOGIN</button>
@@ -94,12 +95,6 @@
 
   <% end %>
 </div>
-
-  <% else %>
-    <div class="dropdown1">
-            <%= link_to 'LOGOUT' , alogout_path, class: "dropbtn1" %> 
-  </div>
-<% end %>
 
 
        

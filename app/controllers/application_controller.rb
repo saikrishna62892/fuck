@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
 
-	add_flash_types :danger,:info, :success,:warning
+add_flash_types :danger,:info, :success,:warning
 
 
 
-  include SessionsHelper
+include SessionsHelper
 before_action :require_login
  
   private

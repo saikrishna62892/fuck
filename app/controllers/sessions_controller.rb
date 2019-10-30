@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
 
 
-skip_before_action :require_login, only: [:create, :acreate]
+skip_before_action :require_login, only: [:create, :acreate, :adestroy]
 
   def new
   end

@@ -14,7 +14,9 @@
 					  <% @m_problems.each  do |pr|%>
 						<tr>
 							<td><%= pr.prob_title%></td>
-					<% end %></tr>
+							<td><%= pr.solutions.count %></td>
+						</tr>
+					<% end %>
 					</table>
 				</div>
 			</div>
