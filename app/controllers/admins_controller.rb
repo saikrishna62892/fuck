@@ -3,7 +3,7 @@ class AdminsController < ApplicationController
 
 
   
-	skip_before_action :require_login, only: [:index, :show]
+	skip_before_action :require_login, only: [:index, :show, :monthly_report, :stat, :afilter_tags]
 
   def index
   
@@ -15,18 +15,57 @@ def show
 
  def monthly_report
  	date = Date.today-30
- 	@m_problems = Problem.where("created_at>?",date)
+  @m_problems = Problem.where("created_at>?",date)
+  @m_solutions = Solution.where("created_at>?",date)
   # require "prawn-table"
   # require "prawn"
 
   Prawn::Document.generate("#{Rails.root}/public/Monthly_Report.pdf") do |pdf|
     table_data = Array.new
-    table_data << ["Title"]
+    pdf.text "Monthly Report"
+    pdf.text "\n\n"
+
+
+    pdf.text "\n\nProblem & Solutions posted"
+    table_data << ["Problem Title","No of Solutions Posted"]
     @m_problems.each do |p|
-      table_data << [p.prob_title]
+      table_data << [p.prob_title, p.solutions.count]
     end
     pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true })
-  end
+    pdf.text "\n\nTotal Problems posted: "+ @m_problems.count.to_s
+    pdf.text "\nTotal Solutions posted: "+ @m_solutions.count.to_s
+
+
+    pdf.text "\n\nMost Viewed problems(top 5)"
+    table_data1 = Array.new
+    table_data1 << ["Problem Title","Total Views"]
+    @most_viewed = @m_problems.order("views DESC").limit(5)
+    @most_viewed.each do |p|
+      table_data1 << [p.prob_title, p.views]
+    end
+    pdf.table(table_data1, :width => 500, :cell_style => { :inline_format => true })
+
+
+    pdf.text "\n\nTop UpVoted problems(top 5)"
+    table_data2 = Array.new
+    table_data2 << ["Problem Title","Solution given by","UpVote Count"]
+    @most_voted_sols = @m_solutions.order("upvote DESC").limit(5)
+    @most_voted_sols.each do |sol|
+      table_data2 << [Problem.find(sol.problem_id).prob_title, User.find(sol.user_id).username,sol.upvote]
+    end
+    pdf.table(table_data2, :width => 500, :cell_style => { :inline_format => true })
+
+
+    pdf.text "\n\nTop DownVoted problems(top 5)"
+    table_data3 = Array.new
+    table_data3 << ["Problem Title","Solution given by","DownVote Count"]
+    @most_dvoted_sols = @m_solutions.order("downvote DESC").limit(5)
+    @most_dvoted_sols.each do |sol|
+      table_data3 << [Problem.find(sol.problem_id).prob_title, User.find(sol.user_id).username,sol.downvote]
+    end
+    pdf.table(table_data3, :width => 500, :cell_style => { :inline_format => true })
+
+  end 
  end
 
  def afilter_tags

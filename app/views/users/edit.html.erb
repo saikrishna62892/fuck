@@ -1,39 +1,76 @@
 <%= render 'flash_messages' %>
+
+
+
+
+<body style="background-color: #f7f6f9;">
 <br>
-<div class="content">
-<div class="wrapper wrapper--w960" >
+<div class="wrapper wrapper--w780">
             <div class="card card-4" >
                 <div class="card-body">
-                    <h2 class="title" align="center">EDIT PROFILE</h2>
-                       <div style="width:500px">
-                       	 <%= form_with model:@user ,scope: :editform, url:user_save_profile_path, method: :patch, local: true do |form| %>
-                         
-                        <div class="container">
-                            <label class="label">UserName: </label>
-                                <%= form.text_field :username ,disabled: true, class: "input--style-4" , placeholder: "USERNAME"%>
-                            <label class="label">FirstName: </label>
-                                <%= form.text_field :firstname ,disabled: true, class: "input--style-4" , placeholder: "FIRSTNAME",rows: "3",cols:"50"%>
-                            <label class="label">LastName: </label>
-                                <%= form.text_field :lastname ,disabled: true, class: "input--style-4" , placeholder: "LASTNAME",rows: "3",cols:"50"%>
-                            <label class="label">Date of Birth: </label>
-                                <%= form.date_field :dob ,disabled: true,class: "input--style-4" %>
-                            <label class="label">Email: </label>
-                                <%= form.email_field :email ,disabled: true,class: "input--style-4" %>
-                            <label class="label">Edu: </label>
-                                <%= form.text_area :qualification ,class: "input--style-4" %>
-]
-                            <label class="label">Skills: </label>
-                                <%= form.text_area :skills,class: "input--style-4" %>
-                            <label class="label">About: </label>
-                                <%= form.text_area :about ,class: "input--style-4" %>
+                    <h2 class="title" align="center">Edit Profile</h2>
 
-                             <center><input type="submit" value="Submit"></center>
+                    <%= form_with model:@user ,scope: :editform, url:user_save_profile_path, method: :patch, local: true do |form| %>
+
+                    <div class="columndiv5">
+                        <div class="container1">
+                           <label class="label">UserName: </label>
+                                <%= form.text_field :username ,disabled: true, class: "input--style-4" , placeholder: "USERNAME"%>
+                            
+                              
+                        </div>  
+                    <div class="container1">
+                           <label class="label">FirstName: </label>
+                                <%= form.text_field :firstname ,disabled: true, class: "input--style-4" , placeholder: "FIRSTNAME",rows: "3",cols:"50"%>
+                    </div>
+                    <div class="container1">
+                            <label class="label">LastName: </label>
+                                <%= form.text_field :lastname ,disabled: true, class: "input--style-4" , placeholder: "LASTNAME",rows: "3",cols:"50"%>  
                         </div>
                         
-                    <%end%>
-                       </div>
-                </div>
-            </div>
-    </div>
-</div>
 
+                             <div class="container1">
+                           <label class="label">Date of Birth: </label>
+                                <%= form.date_field :dob ,disabled: true,class: "input--style-4" %>
+                    </div>
+                    <div class="container1">
+                          <label class="label">Email: </label><br>
+                                <%= form.text_field :email ,disabled: true,class: "input--style-4" %> 
+                    </div>
+                    <div class="container1">
+                           <label class="label">Edu: </label><br>
+                                <%= form.text_area :qualification ,class: "input--style-4" %>
+                    </div>
+                    <div class="container1">
+                           <label class="label">Skills: </label><br>
+                                <%= form.text_area :skills,class: "input--style-4" %>
+                    </div>
+                    <div class="container1">
+                        <label class="label">About: </label><br>
+                                <%= form.text_area :about ,class: "input--style-4" %>
+
+                           
+                    </div>
+                       
+
+                </div>  
+
+                        
+                     <div class="columndiv1"> 
+                     <div class="container1"> 
+                        <br>
+                    <%= image_tag(@user.avatar,:size => "164x164")%>
+                    
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+                    </div>
+                </div>
+
+      
+                       </div>
+                       <center><input type="submit" value="Submit"></center><br>
+                </div>
+          
+            </div>
+            <% end %>
+            <br>
+    </div>
