@@ -3,37 +3,133 @@
         <div class="wrapper wrapper--w960">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title" align="center"><strong>Admin Show</strong></h2>
-
-<%= link_to 'Monthly Report', '/admins/monthly_report'  %><br>
-<%= link_to 'Problem and Solution Statistics', '/admins/stat'  %>
-<%= form_with scope: :afilter_tags, url:afilter_tags_path, local: true do |form| %>
-						
-						<div class="container" style="margin: 0;">
-                            <b> Tags </b><br>
-                            <%= check_box 'internship', 'result', {}, 1, 0 %>&nbsp; Internship
-                            <br>
-                             <%= check_box 'payment', 'result', {}, 1, 0 %>&nbsp;Payment
-                             <br>
-                             <%= check_box 'urgency', 'result', {}, 1, 0 %>&nbsp;Urgency
-                            <br>
-                             <%= form.select :urgency, ["cse","mech","civil"], include_blank: "Branch"%>
-                             &nbsp; &nbsp; &nbsp; 
-                            
-                            <%= form.select :difficulty_level, ["easy","medium","hard"], include_blank: "Difficulty"%>
-                            <br>
-                           
-                            
+                    <h1 class="title" align="center"><strong>Admin Show</strong></h1>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Monthly Report', adminshowstat_path(acurrent_admin,1) ,style:'float:left;' %>
+<%= link_to 'Weekly Report',  adminshowstat_path(acurrent_admin,2) ,style:'float:right;'%></p><br><br>
+            <% if @flag.present? %>
+                <% if @flag=="1" %>
 
 
+                    <center><h4>Monthly Analytics</h4></center>
+                    <% j=0 %>
+                    <% k=0 %>
+                    <% @monthly_data.each do |month| %>
 
-						<div class="p-t-15">
-                             <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                        </div>
+                    
+
+                    <table class="table table-striped table-blue">
+                    <% if  k == 0 %>
+                    <h5 align = 'left'> Problem to Solution Statistics </h5>
+                    <% elsif k == 1%> 
+                    <h5 align = 'left'> Popular Problem by Views</h5>
+                    <% elsif k == 2%> 
+                    <h5 align = 'left'> Popular Problem by Upvotes</h5>
+                    <% else%> 
+                    <h5 align = 'left'> Popular Problem by Downvotes    </h5>
+                    <% end %>
+                    <% k = k+1 %>
+                    <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                            <% month[j].each do |head_data| %>
+                            <th class="text-center" ><%= head_data %></th>
+                            <% end %>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% sno=1%>
+                    
+                    
+                    <% len = month[j].length() %>
+                    <%= len %>
+                    
+                    <tr> 
                         
-                    <%end%>
+                    <% month.each do |data| %>
+                    <td class="text-center" ><%= sno %></td>
+                            <% for i in 0..len %>
+
+                           <td class="text-center" ><%= data[i] %></td> 
+                            <% end %></tr><% sno = sno+1 %><% end %>
+                            
+                    
+                    
+                    
+                    
+                    </tbody>
+                    </table>
+                        <br>
+
+                    <% end %>
+                    <% j = j + 1 %>
+
+                    
+                <% end %>
+                <% if @flag=="2" %>
+                    <center><h4>Weekly Analytics</h4></center>
+                    <% j=0 %>
+                    <% k=0 %>
+                    <% @weekly_data.each do |week| %>
+
+                    
+
+                    <table class="table table-striped table-blue">
+                    <% if  k == 0 %>
+                    <h5 align = 'left'> Problem to Solution Statistics </h5>
+                    <% elsif k == 1%> 
+                    <h5 align = 'left'> Popular Problem by Views</h5>
+                    <% elsif k == 2%> 
+                    <h5 align = 'left'> Popular Problem by Upvotes</h5>
+                    <% else%> 
+                    <h5 align = 'left'> Popular Problem by Downvotes    </h5>
+                    <% end %>
+                    <% k = k+1 %>
+                    <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                            <% week[j].each do |head_data| %>
+                            <th class="text-center" ><%= head_data %></th>
+                            <% end %>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% sno=1%>
+                    
+                    
+                    <% len = week[j].length() %>
+                    <%= len %>
+                    
+                    <tr> 
+                        
+                    <% week.each do |data| %>
+                    <td class="text-center" ><%= sno %></td>
+                            <% for i in 0..len %>
+
+                           <td class="text-center" ><%= data[i] %></td> 
+                            <% end %></tr><% sno = sno+1 %><% end %>
+                            
+                    
+                    
+                    
+                    
+                    </tbody>
+                    </table>
+                        <br>
+
+                    <% end %>
+                    <% j = j + 1 %>
+                <% end %>
+            <%end%>
+
+               
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>
-    </div>
 <br>

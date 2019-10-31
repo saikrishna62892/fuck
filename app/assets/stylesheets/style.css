@@ -26,6 +26,38 @@ font-family: "Poppins", Arial, sans-serif;
 font-weight: bold;  
 }
 
+.centered3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color:#f7f8f9;
+  transform: translate(-50%, -50%);
+}
+
+.fulllmatter{
+
+  border: 2px solid;
+    padding: 35px;
+    margin: 16px;
+    border-radius: 10px;
+    box-shadow: 4px 3px 3px;
+
+
+}
+
+.fulllmatter3{
+
+  
+  background-color: #7785ca;
+  background-blend-mode: lighten;  
+    padding: 15px;
+background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));    border-radius: 2px;
+      
+      
+ background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+
+}
+
 body {
   overflow-x: hidden;
   height: 100%;

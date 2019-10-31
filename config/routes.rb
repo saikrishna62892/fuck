@@ -18,13 +18,13 @@ get '/satisfied/:sol_id/:button_id/' => 'users#satisfied' , as: 'satisfied'
 
 
 
+get '/admins/monthly_report', to: 'admins#monthly_report'
+
 post '/signningUp' => 'users#signningUp', as: 'signningUp'
 
 post '/admins/index' => 'sessions#acreate', as: 'adminlogin'
-get '/admins/show/:id', to: 'admins#show'
-get '/admins/monthly_report', to: 'admins#monthly_report'
-get '/admins/stat', to: 'admins#stat'
-
+get '/admins/show/:id', to: 'admins#show',as: 'adminshow'
+get '/admins/show/:id/:bid' => 'admins#show',as: 'adminshowstat'
 get '/verifier/:user_id/:otp' => 'users#verifier'
 
 get '/edit/:user_id' => 'users#edit', as: 'user_edit_profile'
