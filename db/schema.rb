@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_041147) do
+ActiveRecord::Schema.define(version: 2019_11_01_062606) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -85,14 +85,14 @@ ActiveRecord::Schema.define(version: 2019_10_30_041147) do
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.date "deadline"
-    t.boolean "payment"
-    t.boolean "internship"
-    t.boolean "urgency"
-    t.boolean "miscellaneous"
+    t.boolean "payment", default: false
+    t.boolean "internship", default: false
+    t.boolean "urgency", default: false
+    t.boolean "miscellaneous", default: false
     t.string "dot"
     t.string "type"
-    t.string "difficulty"
-    t.string "branch"
+    t.string "difficulty", default: "Not Specific"
+    t.string "branch", default: "Not Specific"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "problem_id"

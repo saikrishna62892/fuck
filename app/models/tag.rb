@@ -7,5 +7,4 @@ scope :miscellaneous1, -> (miscellaneous) { where miscellaneous: miscellaneous }
 scope :branch1, -> (branch) { where branch: branch }
 scope :difficulty1, -> (difficulty) { where difficulty: difficulty }
 belongs_to :problem
-validates :deadline,presence: true
 end
