@@ -118,7 +118,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       :address => "smtp.gmail.com",
       :port => 587,
-      :domain => 'https://allydash.herokuapp.com/',
+      :domain => 'localhost:3000',
       :user_name => "publishersubscriberpsp@gmail.com",
       :password => "m190xxxcs",
       :authentication => :plain,
