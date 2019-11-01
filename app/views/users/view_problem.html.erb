@@ -58,7 +58,7 @@
                                 <%= link_to 'Approve' ,  approve_path(sol.id)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <%= link_to 'Revert Access' , revert_path(@view.id, sol.user_id) %>
                             <% end %>
-                            <% if sol.status == 'Completed' && @view.user_id == current_user.id %>
+                            <% if sol.status == 'completed' && @view.user_id == current_user.id %>
                                 <%= link_to 'Satisfied :)' , satisfied_path(sol.id,1) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <%= link_to 'Dis-Satified :(' , satisfied_path(sol.id,2) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                
@@ -118,6 +118,8 @@
                                 <strong style="border: 1px solid; border-radius: 2px; padding: 3px; background: orange"> <%= sol.status %>&nbsp;&nbsp;</strong>
                             <% else %>
                                 <strong style="border: 1px solid; border-radius: 2px; padding: 3px; background: green"> <%= sol.status %>&nbsp;&nbsp;</strong>
+                                <%= link_to 'Satisfied :)' , satisfied_path(sol.id,1) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <%= link_to 'Dis-Satified :(' , satisfied_path(sol.id,2) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <% end %>
 
                         </div>
