@@ -3,9 +3,10 @@
         <div class="wrapper wrapper--w960">
             <div class="card card-4">
                 <div class="card-body">
-                    <h1 class="title" align="center"><strong>Admin Show</strong></h1>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Monthly Report', adminshowstat_path(acurrent_admin,1) ,style:'float:left;' %>
-<%= link_to 'Weekly Report',  adminshowstat_path(acurrent_admin,2) ,style:'float:right;'%></p><br><br>
+                    <h1 class="title" align="center"><strong>Admin Show</strong></h1><hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Monthly Analytics', adminshowstat_path(acurrent_admin,1) ,style:'float:left;' %>
+<%= link_to 'Weekly Analytics',  adminshowstat_path(acurrent_admin,2) ,style:'float:right;'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.google.com/recaptcha/admin/site/348161037" target="_blank">Recaptcha Analytics</a></p><br>
+
             <% if @flag.present? %>
                 <% if @flag=="1" %>
 
